@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080e0c"><meta name="description" content="Bashir's personal corner. A little about me, my work and my links.">
+<title>Bashir — BioLink</title>
+<style>
+*{box-sizing:border-box} :root{color-scheme:dark;--green:#95f3bd;--ease:cubic-bezier(.22,1,.36,1)}
+body{margin:0;background:#080e0c;color:#f0f5f1;font-family:Arial,sans-serif;min-height:100svh;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 46%,#184b323b,transparent 53%)}
+header{position:absolute;top:30px;left:6%;right:6%;display:flex;align-items:center;justify-content:space-between;font-size:12px;letter-spacing:.06em;color:#87978e}header strong{font-size:17px;color:#dbe9df;letter-spacing:-.6px}header strong span{color:var(--green)}
+main{position:relative;max-width:660px;margin:auto;padding:110px 24px 35px;text-align:center}
+.eyebrow{font-size:10px;letter-spacing:3px;color:#9db7a7;margin:0 0 18px}.eyebrow:before{content:"";display:inline-block;width:5px;height:5px;background:var(--green);border-radius:50%;margin:0 9px 2px 0}
+h1{font-size:clamp(38px,7vw,58px);font-weight:400;letter-spacing:-2.4px;margin:0 0 14px}h1 span{color:var(--green)}.intro{font-size:14px;color:#91a297;line-height:1.7;margin:0}
+.stage{position:relative;height:375px;perspective:1100px;transition:height .9s var(--ease)}
+.folder{position:absolute;top:125px;left:50%;width:260px;height:180px;transform:translateX(-50%) rotate(-6deg);transition:transform .9s var(--ease),top .9s var(--ease);border:0;background:transparent;padding:0;cursor:pointer;color:#dffff0;perspective:900px;isolation:isolate;-webkit-tap-highlight-color:transparent}
+.folder:focus-visible{outline:2px solid var(--green);outline-offset:22px;border-radius:20px}.folder:hover{transform:translateX(-50%) rotate(-3deg) translateY(-7px)}
+.back{position:absolute;inset:0;border-radius:16px;background:linear-gradient(135deg,#3e9b66,#103d29);box-shadow:inset 0 1px 1px #b0ffce88,0 24px 65px #0009}.back:before{content:"";position:absolute;left:0;top:-22px;width:102px;height:40px;border-radius:16px 18px 0 0;background:#3c8c5e;border-top:1px solid #a4efbe99}
+.paper{position:absolute;left:35px;top:-23px;width:155px;height:130px;border-radius:12px;background:linear-gradient(130deg,#dce9cd,#748c75);border:1px solid #e3ffda77;transform:rotate(-14deg);transition:transform .7s var(--ease),opacity .4s;box-shadow:0 5px 10px #0004}.paper.two{left:85px;top:-36px;transform:rotate(13deg);background:linear-gradient(135deg,#395745,#1b2e24)}.paper:after{content:"✦";display:block;font-size:45px;padding:20px;color:#d4ffdf}.paper.one:after{content:"↗";color:#33543c}
+.front{position:absolute;inset:12px -4px -5px;border-radius:14px 32px 19px 19px;background:linear-gradient(125deg,#7df2a459,#153e2dcc 75%);backdrop-filter:blur(14px);border:1px solid #9df9bd75;box-shadow:inset 1px 1px 2px #dcffdf70,inset -2px -2px 5px #65dc8b25,0 15px 30px #0005;transform-origin:bottom;transform:rotateX(-13deg);transition:transform .8s var(--ease);display:flex;align-items:flex-end;padding:24px;gap:10px;font-size:17px;letter-spacing:-.4px;text-align:left}.front small{margin-left:auto;font-size:10px;letter-spacing:1px;color:#adccb9}.folder:hover .front{transform:rotateX(-23deg)}
+.shadow{position:absolute;top:320px;left:50%;width:210px;height:22px;background:#4dcc7b20;filter:blur(20px);transform:translateX(-50%);transition:opacity .5s}
+.hint{margin:0;color:#a5b8ab;font-size:12px;letter-spacing:.3px;transition:opacity .3s}.hint span{display:block;color:#506458;font-size:10px;margin-top:10px}.cards{position:absolute;top:0;left:0;right:0;list-style:none;padding:0;margin:0;pointer-events:none}.card{position:absolute;top:125px;left:50%;width:170px;height:76px;opacity:0;transform:translateX(-50%) scale(.65) rotate(var(--r));transition:transform .95s var(--ease),top .95s var(--ease),width .95s var(--ease),opacity .25s;transition-delay:calc(var(--i)*65ms);z-index:3}
+.tile{height:100%;width:100%;display:flex;align-items:center;gap:15px;padding:15px 19px;border:1px solid #4b775d66;border-radius:17px;background:linear-gradient(110deg,#172d21f2,#101b16f5);box-shadow:0 8px 30px #0003;text-align:left;color:inherit;text-decoration:none;transition:background .2s,border-color .2s,translate .2s}.tile:hover{background:#203b2b;border-color:#85db9d99;translate:0 -2px}.icon{display:grid;place-items:center;width:40px;height:40px;flex-shrink:0;border-radius:12px;border:1px solid #8ce4a944;color:#b9e9c8;font-size:22px}.words{flex:1}.words b{font-weight:400;font-size:15px;display:block}.words small{font-size:10px;color:#859c8c;display:block;margin-top:6px}.arrow{color:#93c4a2;font-size:18px}.tile[aria-disabled=true]{cursor:default}.tile:focus-visible{outline:2px solid #bcf8cb;outline-offset:4px}
+.opened .stage{height:510px}.opened .folder{top:26px;transform:translateX(-50%) rotate(0) scale(.53)}.opened .folder .front{transform:rotateX(-38deg)}.opened .paper{transform:translateY(-60px) rotate(0);opacity:0}.opened .shadow{opacity:0}.opened .card{top:calc(165px + var(--i)*84px);width:min(100%,390px);opacity:1;transform:translateX(-50%) scale(1) rotate(0)}.opened .cards{pointer-events:auto}.opened .hint{color:#8db19a}
+footer{margin-top:40px;color:#4f6758;font-size:10px;letter-spacing:1.4px} .footer-mark{color:#86bf98;margin:0 9px}noscript{display:block;padding:20px;color:#aacdb5}
+@media(max-width:480px){header{top:24px}main{padding-top:110px}.stage{height:355px}.folder{width:230px;height:165px;top:120px}.opened .stage{height:500px}.opened .card{top:calc(153px + var(--i)*84px)}footer{margin-top:28px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header><strong>bashir<span>.</span></strong><span>A LITTLE ABOUT ME</span></header>
+<main id="bio">
+<p class="eyebrow">MY PERSONAL CORNER</p><h1>Hi, I'm Bashir<span>.</span></h1><p class="intro">A few things about me.<br>All in one little folder.</p>
+<div class="stage">
+<div class="shadow" aria-hidden="true"></div>
+<button class="folder" id="folder" aria-label="Open my folder" aria-expanded="false" aria-controls="links"><span class="back" aria-hidden="true"></span><span class="paper one" aria-hidden="true"></span><span class="paper two" aria-hidden="true"></span><span class="front" aria-hidden="true"><span>✳</span> My little world <small>01—04</small></span></button>
+<ul class="cards" id="links" inert aria-hidden="true">
+<li class="card" style="--i:0;--r:-14deg"><div class="tile" aria-disabled="true"><span class="icon" aria-hidden="true">☺</span><span class="words"><b>About me</b><small>A little introduction · Coming soon</small></span><span class="arrow" aria-hidden="true">↗</span></div></li>
+<li class="card" style="--i:1;--r:10deg"><div class="tile" aria-disabled="true"><span class="icon" aria-hidden="true">✳</span><span class="words"><b>My work</b><small>Selected work &amp; portfolio · Coming soon</small></span><span class="arrow" aria-hidden="true">↗</span></div></li>
+<li class="card" style="--i:2;--r:-8deg"><div class="tile" aria-disabled="true"><span class="icon" aria-hidden="true">▧</span><span class="words"><b>My projects</b><small>Things I've been building · Coming soon</small></span><span class="arrow" aria-hidden="true">↗</span></div></li>
+<li class="card" style="--i:3;--r:15deg"><div class="tile" aria-disabled="true"><span class="icon" aria-hidden="true">↗</span><span class="words"><b>Let's connect</b><small>Find me around the internet · Coming soon</small></span><span class="arrow" aria-hidden="true">↗</span></div></li>
+</ul>
+</div>
+<p class="hint" id="hint" aria-live="polite">Click the folder to explore<span>یک کلیک، دنیای کوچک من</span></p>
+<noscript>Enable JavaScript to open the interactive folder. Links will be added soon.</noscript>
+<footer>MADE OF IDEAS <span class="footer-mark">✦</span> CONNECTED BY CURIOSITY</footer>
+</main>
+<script>
+const root=document.getElementById('bio'),folder=document.getElementById('folder'),links=document.getElementById('links'),hint=document.getElementById('hint');
+let opened=false;
+function toggleFolder(){opened=!opened;root.classList.toggle('opened',opened);folder.setAttribute('aria-expanded',String(opened));folder.setAttribute('aria-label',opened?'Close my folder':'Open my folder');links.inert=!opened;links.setAttribute('aria-hidden',String(!opened));hint.replaceChildren(document.createTextNode(opened?'Click the folder to tuck everything away':'Click the folder to explore'));const sub=document.createElement('span');sub.lang='fa';sub.textContent=opened?'برای بستن، دوباره روی فولدر بزن':'یک کلیک، دنیای کوچک من';hint.append(sub)}
+folder.addEventListener('click',toggleFolder);document.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened){toggleFolder();folder.focus()}});
+</script>
+</body></html>
