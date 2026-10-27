@@ -192,6 +192,12 @@ header,main,footer{z-index:1}.desk{position:relative;width:100%;height:290px;tra
  .action{min-height:78px}.action strong{font-size:15px}.action small{font-size:12px}
 }
 @media(prefers-reduced-motion:reduce){.discipline-mark{animation:none!important}}
+
+.gallery-head h2{font-size:12px;font-weight:600;letter-spacing:.01em;color:#a9c4b2}
+.bottom-links{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.bottom-links a{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:52px;padding:12px 15px;border:1px solid #64846d70;border-radius:13px;background:#15291d;color:#cde1d2;font-size:13px}
+.bottom-links a:hover{background:#284431;border-color:#a3cbb0}
+@media(max-width:480px){.gallery-head h2{font-size:12px}.tags,.opened .tags{right:50%;translate:50% 0;top:316px;width:max-content;padding:8px 12px;transform:none}.opened .tags{top:165px}.tags span{font-size:11px!important;line-height:20px}.opened .desk{height:208px}.opened .desk .folder-dock{height:130px}}
 </style></head><body>
 <div class="glitch-overlay" aria-hidden="true"></div>
 <header><a class="wordmark" href="https://bashiramri.ir/" aria-label="Bashir's main site">bashir<span>.</span></a><span class="version">Design C</span></header>
@@ -200,8 +206,7 @@ header,main,footer{z-index:1}.desk{position:relative;width:100%;height:290px;tra
 <nav class="shortcuts" aria-label="Quick links"><a href="https://bashiramri.ir/studio/en/archive/">Explore my work <span aria-hidden="true">↗</span></a><a href="https://t.me/bashiramrii">Let’s talk <span aria-hidden="true">↗</span></a></nav></div>
 <div class="desk"><div class="desk-decor" aria-hidden="true"><span class="mark one">✳</span><span class="mark two">＋</span><span class="mark three">○</span></div><div class="collage photo"><div class="monogram">BA</div><span>Bashir Amri</span></div><div class="collage note">Keep making.<br>Keep exploring.<small>A little note</small></div><div class="tags" aria-label="Creative disciplines"><span><i class="discipline-mark mark-design" aria-hidden="true"></i>Design</span><span><i class="discipline-mark mark-motion" aria-hidden="true"></i>Motion</span><span><i class="discipline-mark mark-video" aria-hidden="true"></i>Video</span></div><div class="folder-dock">
 <button class="folder" id="folder" aria-label="Open my folder" aria-expanded="false" aria-controls="contents"><span class="folder-art" aria-hidden="true"><span class="back"></span><span class="paper one preview-paper"><img src="https://lh3.googleusercontent.com/d/1bc7TI5WsOFAFVGopHU1x62PtXGfvWJoJ" alt=""></span><span class="paper two preview-paper"><img src="https://lh3.googleusercontent.com/d/1S_ryUZDk568uoZZMU-hWyO82m59XtrxB" alt=""></span><span class="front"><span>✳</span> My little world <small id="folder-tag">Open ↗</small></span></span></button>
-<button class="close-control" type="button" data-close aria-controls="contents" tabindex="-1">Close folder <span aria-hidden="true">↑</span></button>
-<button class="star-button" type="button" id="star" aria-label="Open a small surprise" aria-expanded="false" aria-controls="surprise">✳</button><div class="surprise" id="surprise" hidden><span>✦</span><p>A little room for curiosity.</p><button type="button" id="close-surprise">Close</button></div></div></div>
+</div></div>
 <section class="drawer" id="contents" inert aria-hidden="true" aria-label="Inside my folder"><div class="drawer-inner">
 <section class="archive-showcase reveal" style="--i:0" aria-label="Automatic selected work slideshow"><div class="gallery-head"><h2>From my archive</h2></div><div class="archive-grid"><article class="archive-slot" data-slot="0" aria-label="Archive collection 1"><div class="archive-visual"><a class="slide-link" href="https://bashiramri.ir/studio/en/archive/" aria-label="Explore RAH-81 in the archive"><img src="https://drive.google.com/thumbnail?id=138LjlEe-aM9GPpOarA4BsaOLHT73_dO7&sz=w640" width="600" height="750" alt="RAH-81" decoding="async"></a><video muted playsinline loop preload="none" hidden aria-label="Video work preview"></video></div></article><article class="archive-slot" data-slot="1" aria-label="Archive collection 2"><div class="archive-visual"><a class="slide-link" href="https://bashiramri.ir/studio/en/archive/" aria-label="Explore AATTRR 2 in the archive"><img src="https://lh3.googleusercontent.com/d/1DA5u01JhRjgNdQ6bjKDtCsM3-gQFuHAZ" width="600" height="750" alt="AATTRR 2" decoding="async"></a><video muted playsinline loop preload="none" hidden aria-label="Video work preview"></video></div></article><article class="archive-slot" data-slot="2" aria-label="Archive collection 3"><div class="archive-visual"><a class="slide-link" href="https://bashiramri.ir/studio/en/archive/" aria-label="Explore The Night in the archive"><img src="https://lh3.googleusercontent.com/d/1S_ryUZDk568uoZZMU-hWyO82m59XtrxB" width="600" height="750" alt="The Night" decoding="async"></a><video muted playsinline loop preload="none" hidden aria-label="Video work preview"></video></div></article></div><button type="button" id="gallery-pause" aria-label="Pause slideshow" title="Pause slideshow" aria-pressed="false"><svg class="pause-bars" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="pause-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 11 7-11 7z"/></svg></button></section>
 <div class="editorial-grid"><article class="now-card reveal" id="now-card" style="--i:3" hidden><span class="card-kicker">Currently</span><p id="now-text"></p><small id="now-date"></small></article></div>
@@ -209,15 +214,15 @@ header,main,footer{z-index:1}.desk{position:relative;width:100%;height:290px;tra
 <a class="action talk reveal" style="--i:2" href="https://t.me/bashiramrii"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" stroke="none" d="M21.5 4.3 18.4 19c-.2 1-1 1.2-1.8.7l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.4-4.9 8.9-8c.4-.4-.1-.6-.6-.3L6.1 13l-4.7-1.5c-1-.3-1-1 .2-1.5L20 2.9c.9-.3 1.7.2 1.5 1.4Z"/></svg></span><span><strong>Let’s talk</strong><small>For projects &amp; collaborations · Telegram</small></span><span class="arrow" aria-hidden="true">↗</span></a>
 
 <nav class="socials reveal" style="--i:3" aria-label="Elsewhere"><a href="https://www.instagram.com/bashir_amri84/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a><a href="https://www.linkedin.com/in/bashiramri/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" stroke="none" d="M5 3.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM3.4 9h3.2v11H3.4zM9 9h3.1v1.5h.1A3.4 3.4 0 0 1 15.3 8.7c3.3 0 3.9 2.1 3.9 4.9V20H16v-5.7c0-1.4 0-3.1-1.9-3.1s-2.1 1.5-2.1 3V20H9z"/></svg>LinkedIn</a><a href="mailto:bashiramri84@gmail.com"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>Email</a></nav>
-<a class="portfolio-home reveal" style="--i:4" href="https://bashiramri.ir/"><span>My main site <span aria-hidden="true">·</span> Work &amp; projects</span><span aria-hidden="true">↗</span></a>
-<button class="bottom-close" type="button" data-close>Close folder ↑</button>
+<nav class="bottom-links reveal" style="--i:4" aria-label="More links"><a href="https://bashiramri.ir/">Main site <span aria-hidden="true">↗</span></a><a href="https://bashiramri.ir/studio/en/archive/">Work &amp; projects <span aria-hidden="true">↗</span></a></nav>
+
 </div></section>
 <noscript><p>Use the direct work and Telegram links above. Enable JavaScript to explore the folder.</p></noscript>
 </main>
-<footer>A little world of ideas.<nav class="version-nav" aria-label="Design versions"><a href="../A/">A</a><a href="../B/">B</a><a href="../C/" aria-current="page">C</a></nav></footer>
+<footer>A little world of ideas.</footer>
 <script>
 const root=document.getElementById('bio'),folder=document.getElementById('folder'),contents=document.getElementById('contents');
-const closeButtons=[...document.querySelectorAll('[data-close]')],topClose=document.querySelector('.close-control'),tag=document.getElementById('folder-tag');
+const tag=document.getElementById('folder-tag');
 const motion=window.matchMedia('(prefers-reduced-motion: reduce)'),layer=document.querySelector('.glitch-overlay');
 let opened=false,overlayTimer,textTimer,folderTimer,mode=0,lastAction=-1000;
 function clearOverlay(){clearTimeout(overlayTimer);layer.classList.remove('active','soft')}
@@ -238,21 +243,20 @@ function moveDeskObjects(before){
  });
 }
 function setOpen(next){
- if(!document.getElementById("surprise").hidden){document.getElementById("surprise").hidden=true;document.getElementById("star").setAttribute("aria-expanded","false")}
  if(next===opened||performance.now()-lastAction<180)return;
  const active=document.activeElement;
- if(!next&&(contents.contains(active)||closeButtons.includes(active)))folder.focus({preventScroll:true});
+ if(!next&&(contents.contains(active)))folder.focus({preventScroll:true});
  const deskBefore=deskObjects.map(el=>el.getBoundingClientRect());
  deskAnimations.forEach(animation=>animation.cancel());deskAnimations.clear();
  opened=next;lastAction=performance.now();clearEffects();
  root.classList.toggle('opened',opened);moveDeskObjects(deskBefore);folder.setAttribute('aria-expanded',String(opened));folder.setAttribute('aria-label',opened?'Close my folder':'Open my folder');
- contents.inert=!opened;contents.setAttribute('aria-hidden',String(!opened));topClose.tabIndex=opened?0:-1;tag.textContent=opened?'Close ↑':'Open ↗';
+ contents.inert=!opened;contents.setAttribute('aria-hidden',String(!opened));tag.textContent=opened?'':'Open ↗';
  textGlitch(false);
  if(!motion.matches&&!document.hidden){void folder.offsetWidth;document.body.classList.add('folder-glitch');folderTimer=setTimeout(clearFolder,540)}
  // Keep the folder's control in view if closing from the bottom of the content.
  if(!next){const limit=window.scrollY+folder.getBoundingClientRect().top-100;if(window.scrollY>limit)window.scrollTo({top:Math.max(0,limit),behavior:motion.matches?'instant':'smooth'})}
 }
-folder.addEventListener('click',()=>setOpen(!opened));closeButtons.forEach(button=>button.addEventListener('click',()=>setOpen(false)));
+folder.addEventListener('click',()=>setOpen(!opened));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened){setOpen(false);folder.focus({preventScroll:true})}});
 let idleUntil=0;
 document.addEventListener('pointerdown',()=>{idleUntil=performance.now()+900;clearOverlay()},{passive:true});
@@ -267,11 +271,6 @@ if(motion.addEventListener)motion.addEventListener('change',()=>{clearEffects();
 /* Populate both values with verified current information to show the NOW card. */
 const nowContent={text:'',updated:''};
 if(nowContent.text.trim()&&nowContent.updated.trim()){document.getElementById('now-text').textContent=nowContent.text;document.getElementById('now-date').textContent='Updated '+nowContent.updated;document.getElementById('now-card').hidden=false}
-const star=document.getElementById('star'),surprise=document.getElementById('surprise'),closeSurprise=document.getElementById('close-surprise');
-function showSurprise(show){surprise.hidden=!show;star.setAttribute('aria-expanded',String(show));if(show)closeSurprise.focus();else star.focus()}
-star.addEventListener('click',()=>showSurprise(surprise.hidden));closeSurprise.addEventListener('click',()=>showSurprise(false));
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!surprise.hidden){e.stopImmediatePropagation();showSurprise(false)}},true);
-
 const archiveGroups=[[{"title":"RAH-81","type":"Video editing","id":"138LjlEe-aM9GPpOarA4BsaOLHT73_dO7","video":true,"image":"https://drive.google.com/thumbnail?id=138LjlEe-aM9GPpOarA4BsaOLHT73_dO7&sz=w640"},{"title":"Tark-e Eshgh-e Darya","type":"Music cover","id":"1bc7TI5WsOFAFVGopHU1x62PtXGfvWJoJ","video":false,"image":"https://lh3.googleusercontent.com/d/1bc7TI5WsOFAFVGopHU1x62PtXGfvWJoJ"},{"title":"JENGOpoor","type":"Poster","id":"1jnMiaTNaBz9G4xvuWe0rX7YKYd96Qfo9","video":false,"image":"https://lh3.googleusercontent.com/d/1jnMiaTNaBz9G4xvuWe0rX7YKYd96Qfo9"},{"title":"Album Matarsak 21","type":"Poster","id":"1uWt4oXfLiM4YuIJxeLKwWxaGx0PsJjk8","video":false,"image":"https://lh3.googleusercontent.com/d/1uWt4oXfLiM4YuIJxeLKwWxaGx0PsJjk8"}],[{"title":"AATTRR 2","type":"Poster","id":"1DA5u01JhRjgNdQ6bjKDtCsM3-gQFuHAZ","video":false,"image":"https://lh3.googleusercontent.com/d/1DA5u01JhRjgNdQ6bjKDtCsM3-gQFuHAZ"},{"title":"RAH-81 (2)","type":"Video editing","id":"1HS3CEGu6vNBF0p5CGyuo3zNFOTy5um9h","video":true,"image":"https://drive.google.com/thumbnail?id=1HS3CEGu6vNBF0p5CGyuo3zNFOTy5um9h&sz=w640"},{"title":"Fajr","type":"Poster","id":"1tkWZb3Fv3xjsO8Zi8I1JA0pHzG-1wN05","video":false,"image":"https://lh3.googleusercontent.com/d/1tkWZb3Fv3xjsO8Zi8I1JA0pHzG-1wN05"},{"title":"AK2","type":"Video editing","id":"1bno0Mj947-o9eSRNnJtCU4VV4ID6V7wh","video":true,"image":"https://drive.google.com/thumbnail?id=1bno0Mj947-o9eSRNnJtCU4VV4ID6V7wh&sz=w640"}],[{"title":"The Night","type":"Music cover","id":"1S_ryUZDk568uoZZMU-hWyO82m59XtrxB","video":false,"image":"https://lh3.googleusercontent.com/d/1S_ryUZDk568uoZZMU-hWyO82m59XtrxB"},{"title":"Album Matarsak 21","type":"Poster","id":"1uWt4oXfLiM4YuIJxeLKwWxaGx0PsJjk8","video":false,"image":"https://lh3.googleusercontent.com/d/1uWt4oXfLiM4YuIJxeLKwWxaGx0PsJjk8"},{"title":"AK2","type":"Video editing","id":"1bno0Mj947-o9eSRNnJtCU4VV4ID6V7wh","video":true,"image":"https://drive.google.com/thumbnail?id=1bno0Mj947-o9eSRNnJtCU4VV4ID6V7wh&sz=w640"},{"title":"Tark-e Eshgh-e Darya","type":"Music cover","id":"1bc7TI5WsOFAFVGopHU1x62PtXGfvWJoJ","video":false,"image":"https://lh3.googleusercontent.com/d/1bc7TI5WsOFAFVGopHU1x62PtXGfvWJoJ"}]];
 const slots=[...document.querySelectorAll('.archive-slot')],positions=[0,0,0];
 const pauseButton=document.getElementById('gallery-pause');
