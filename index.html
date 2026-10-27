@@ -27,20 +27,14 @@ footer{margin-top:40px;color:#4f6758;font-size:10px;letter-spacing:1.4px} .foote
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
 
 .intro{transition:opacity .45s ease,transform .45s ease}.opened .intro{opacity:0;transform:translateY(-8px);pointer-events:none}
-.glitch-overlay{position:fixed;inset:0;z-index:100;pointer-events:none;opacity:0;background:repeating-linear-gradient(0deg,transparent 0 3px,#b3ffdd12 4px,transparent 5px);mix-blend-mode:screen}
-body.glitching .glitch-overlay{animation:scan-glitch .52s steps(2,end)}
-body.glitching main,body.glitching header,body.glitching footer{animation:page-glitch .52s steps(2,end)}
-@keyframes scan-glitch{0%,100%{opacity:0;transform:translateX(0)}15%{opacity:.75;transform:translateX(-4px)}35%{opacity:.35;transform:translateX(4px)}55%{opacity:.6;transform:translateX(-2px)}75%{opacity:.2;transform:translateX(2px)}}
-@keyframes page-glitch{0%,100%{filter:none;translate:0}12%{filter:drop-shadow(3px 0 #4f9870) drop-shadow(-3px 0 #a3e8be);translate:2px 0}24%{filter:hue-rotate(10deg);translate:-2px 0}38%{filter:drop-shadow(-3px 0 #4f9870) drop-shadow(3px 0 #a3e8be);translate:3px 0}55%{filter:hue-rotate(-10deg);translate:-1px 0}70%{filter:drop-shadow(2px 0 #4f9870) drop-shadow(-2px 0 #a3e8be)}}
-@media(prefers-reduced-motion:reduce){body.glitching .glitch-overlay,body.glitching main,body.glitching header,body.glitching footer{animation:none}}
-body.glitching.soft .glitch-overlay{animation:soft-scan .36s steps(2,end)}
-body.glitching.soft main,body.glitching.soft header,body.glitching.soft footer{animation:soft-glitch .36s steps(2,end)}
-@keyframes soft-scan{0%,100%{opacity:0}30%{opacity:.22;transform:translateX(-1px)}65%{opacity:.12;transform:translateX(1px)}}
-@keyframes soft-glitch{0%,100%{filter:none;translate:0}25%{filter:drop-shadow(1px 0 #4f9870) drop-shadow(-1px 0 #a3e8be);translate:1px 0}55%{filter:hue-rotate(4deg);translate:-1px 0}}
-@media(prefers-reduced-motion:reduce){body.glitching.soft .glitch-overlay,body.glitching.soft main,body.glitching.soft header,body.glitching.soft footer{animation:none}}
+
+.glitch-overlay{position:fixed;inset:0;z-index:100;pointer-events:none;width:100%;height:100%;image-rendering:pixelated}
+body.glitching main,body.glitching header{filter:url(#pixel-displace)}
+@media(prefers-reduced-motion:reduce){body.glitching main,body.glitching header{filter:none}.glitch-overlay{display:none}}
 </style>
 </head>
-<body><div class="glitch-overlay" aria-hidden="true"></div>
+<body><canvas class="glitch-overlay" id="pixel-overlay" aria-hidden="true"></canvas>
+<svg width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none"><defs><filter id="pixel-displace" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB"><feImage id="pixel-map" x="0" y="0" width="100%" height="100%" preserveAspectRatio="none" result="map"/><feDisplacementMap id="pixel-shift" in="SourceGraphic" in2="map" scale="0" xChannelSelector="R" yChannelSelector="G"/></filter></defs></svg>
 <header><strong>bashir<span>.</span></strong><span>A LITTLE ABOUT ME</span></header>
 <main id="bio">
 <p class="eyebrow">MY PERSONAL CORNER</p><h1>Hi, I'm Bashir Amri<span>.</span></h1><p class="intro">A few things about me.<br>All in one little folder.</p>
@@ -64,8 +58,37 @@ body.glitching.soft main,body.glitching.soft header,body.glitching.soft footer{a
 const root=document.getElementById('bio'),folder=document.getElementById('folder'),links=document.getElementById('links');
 let opened=false;
 function toggleFolder(){opened=!opened;root.classList.toggle('opened',opened);folder.setAttribute('aria-expanded',String(opened));folder.setAttribute('aria-label',opened?'Close my folder':'Open my folder');links.inert=!opened;links.setAttribute('aria-hidden',String(!opened));}
-let glitchTimer;
-function glitch(soft=false){if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.body.classList.remove('glitching','soft');void document.body.offsetWidth;document.body.classList.toggle('soft',soft);document.body.classList.add('glitching');clearTimeout(glitchTimer);glitchTimer=setTimeout(()=>document.body.classList.remove('glitching'),520)}
+
+let glitchTimer,glitchFrame;
+const overlay=document.getElementById('pixel-overlay'),ctx=overlay.getContext('2d');
+const map=document.createElement('canvas');map.width=64;map.height=64;
+const mapCtx=map.getContext('2d'),mapImage=document.getElementById('pixel-map'),shift=document.getElementById('pixel-shift');
+function clearGlitch(){cancelAnimationFrame(glitchFrame);clearTimeout(glitchTimer);document.body.classList.remove('glitching');shift.setAttribute('scale','0');ctx.clearRect(0,0,overlay.width,overlay.height)}
+function glitch(soft=false){
+ if(document.hidden||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ clearGlitch();overlay.width=window.innerWidth;overlay.height=window.innerHeight;
+ const duration=soft?260:500,start=performance.now();let last=-100;
+ function frame(now){
+  const elapsed=now-start;if(elapsed>=duration){clearGlitch();return}
+  if(elapsed-last>=65){
+   last=elapsed;ctx.clearRect(0,0,overlay.width,overlay.height);
+   mapCtx.fillStyle='rgb(128,128,128)';mapCtx.fillRect(0,0,64,64);
+   const count=soft?3:12,cell=soft?12:16;
+   for(let i=0;i<count;i++){
+    const x=Math.floor(Math.random()*56),y=Math.floor(Math.random()*62),w=2+Math.floor(Math.random()*14),h=1+Math.floor(Math.random()*3);
+    mapCtx.fillStyle='rgb('+Math.floor(Math.random()*255)+',128,128)';mapCtx.fillRect(x,y,w,h);
+    const px=Math.floor(Math.random()*overlay.width/cell)*cell,py=Math.floor(Math.random()*overlay.height/cell)*cell;
+    ctx.fillStyle=i%3===0?'rgba(125,208,159,'+(soft?.045:.13)+')':'rgba(9,30,19,'+(soft?.1:.28)+')';
+    ctx.fillRect(px,py,cell*(1+Math.floor(Math.random()*5)),cell);
+   }
+   mapImage.setAttribute('href',map.toDataURL());shift.setAttribute('scale',soft?'10':'38');document.body.classList.add('glitching');
+  }
+  glitchFrame=requestAnimationFrame(frame);
+ }
+ glitchFrame=requestAnimationFrame(frame);glitchTimer=setTimeout(clearGlitch,duration+50);
+}
+document.addEventListener('visibilitychange',()=>{if(document.hidden)clearGlitch()});
+window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',clearGlitch);
 folder.addEventListener('click',()=>{toggleFolder();glitch()});
 setInterval(()=>{if(!document.hidden&&!document.body.classList.contains('glitching'))glitch(true)},3500);document.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened){toggleFolder();folder.focus()}});
 </script>
