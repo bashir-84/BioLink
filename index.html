@@ -59,6 +59,18 @@ body.text-glitch.text-soft header,body.text-glitch.text-soft .eyebrow,body.text-
 @keyframes title-glitch{0%,100%{filter:none;translate:0}12%{filter:drop-shadow(3px 0 #4f9870) drop-shadow(-3px 0 #a3e8be);translate:2px 0}24%{filter:hue-rotate(10deg);translate:-2px 0}38%{filter:drop-shadow(-3px 0 #4f9870) drop-shadow(3px 0 #a3e8be);translate:3px 0}55%{filter:hue-rotate(-10deg);translate:-1px 0}70%{filter:drop-shadow(2px 0 #4f9870) drop-shadow(-2px 0 #a3e8be)}}
 @keyframes title-glitch-soft{0%,100%{filter:none;translate:0}25%{filter:drop-shadow(1px 0 #4f9870) drop-shadow(-1px 0 #a3e8be);translate:1px 0}55%{filter:hue-rotate(4deg);translate:-1px 0}}
 @media(prefers-reduced-motion:reduce){body.text-glitch header,body.text-glitch .eyebrow,body.text-glitch h1{animation:none!important}}
+
+/* Folder and cards receive this effect only on an explicit folder action. */
+body.folder-glitch .folder,body.folder-glitch .tile{animation:folder-click-glitch .52s steps(2,end)}
+@keyframes folder-click-glitch{
+0%,100%{filter:none}
+12%{filter:drop-shadow(3px 0 #4f9870) drop-shadow(-3px 0 #a3e8be)}
+24%{filter:hue-rotate(10deg)}
+38%{filter:drop-shadow(-3px 0 #4f9870) drop-shadow(3px 0 #a3e8be)}
+55%{filter:hue-rotate(-10deg)}
+70%{filter:drop-shadow(2px 0 #4f9870) drop-shadow(-2px 0 #a3e8be)}
+}
+@media(prefers-reduced-motion:reduce){body.folder-glitch .folder,body.folder-glitch .tile{animation:none!important}}
 </style>
 </head>
 <body><div class="glitch-overlay" aria-hidden="true"></div>
@@ -105,12 +117,21 @@ function textGlitch(soft=false){
  document.body.classList.toggle('text-soft',soft);document.body.classList.add('text-glitch');
  textTimer=setTimeout(clearText,soft?380:540);
 }
-function activateFolder(){lastFolderAction=Date.now();toggleFolder();textGlitch(false)}
+let folderGlitchTimer;
+function clearFolderGlitch(){clearTimeout(folderGlitchTimer);document.body.classList.remove('folder-glitch')}
+function activateFolder(){
+ lastFolderAction=Date.now();toggleFolder();textGlitch(false);
+ clearFolderGlitch();
+ if(!motion.matches&&!document.hidden){
+  void folder.offsetWidth;document.body.classList.add('folder-glitch');
+  folderGlitchTimer=setTimeout(clearFolderGlitch,540);
+ }
+}
 folder.addEventListener('click',activateFolder);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened){activateFolder();folder.focus()}});
 setInterval(ambientGlitch,3000);
 setInterval(()=>{if(Date.now()-lastFolderAction>900)textGlitch(true)},3500);
-document.addEventListener('visibilitychange',()=>{if(document.hidden){clearOverlay();clearText()}});
-if(motion.addEventListener)motion.addEventListener('change',()=>{clearOverlay();clearText()});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){clearOverlay();clearText();clearFolderGlitch()}});
+if(motion.addEventListener)motion.addEventListener('change',()=>{clearOverlay();clearText();clearFolderGlitch()});
 </script>
 </body></html>
