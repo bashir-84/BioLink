@@ -33,6 +33,11 @@ body.glitching main,body.glitching header,body.glitching footer{animation:page-g
 @keyframes scan-glitch{0%,100%{opacity:0;transform:translateX(0)}15%{opacity:.75;transform:translateX(-4px)}35%{opacity:.35;transform:translateX(4px)}55%{opacity:.6;transform:translateX(-2px)}75%{opacity:.2;transform:translateX(2px)}}
 @keyframes page-glitch{0%,100%{filter:none;translate:0}12%{filter:drop-shadow(3px 0 #4f9870) drop-shadow(-3px 0 #a3e8be);translate:2px 0}24%{filter:hue-rotate(10deg);translate:-2px 0}38%{filter:drop-shadow(-3px 0 #4f9870) drop-shadow(3px 0 #a3e8be);translate:3px 0}55%{filter:hue-rotate(-10deg);translate:-1px 0}70%{filter:drop-shadow(2px 0 #4f9870) drop-shadow(-2px 0 #a3e8be)}}
 @media(prefers-reduced-motion:reduce){body.glitching .glitch-overlay,body.glitching main,body.glitching header,body.glitching footer{animation:none}}
+body.glitching.soft .glitch-overlay{animation:soft-scan .36s steps(2,end)}
+body.glitching.soft main,body.glitching.soft header,body.glitching.soft footer{animation:soft-glitch .36s steps(2,end)}
+@keyframes soft-scan{0%,100%{opacity:0}30%{opacity:.22;transform:translateX(-1px)}65%{opacity:.12;transform:translateX(1px)}}
+@keyframes soft-glitch{0%,100%{filter:none;translate:0}25%{filter:drop-shadow(1px 0 #4f9870) drop-shadow(-1px 0 #a3e8be);translate:1px 0}55%{filter:hue-rotate(4deg);translate:-1px 0}}
+@media(prefers-reduced-motion:reduce){body.glitching.soft .glitch-overlay,body.glitching.soft main,body.glitching.soft header,body.glitching.soft footer{animation:none}}
 </style>
 </head>
 <body><div class="glitch-overlay" aria-hidden="true"></div>
@@ -60,8 +65,8 @@ const root=document.getElementById('bio'),folder=document.getElementById('folder
 let opened=false;
 function toggleFolder(){opened=!opened;root.classList.toggle('opened',opened);folder.setAttribute('aria-expanded',String(opened));folder.setAttribute('aria-label',opened?'Close my folder':'Open my folder');links.inert=!opened;links.setAttribute('aria-hidden',String(!opened));}
 let glitchTimer;
-function glitch(){if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.body.classList.remove('glitching');void document.body.offsetWidth;document.body.classList.add('glitching');clearTimeout(glitchTimer);glitchTimer=setTimeout(()=>document.body.classList.remove('glitching'),520)}
+function glitch(soft=false){if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.body.classList.remove('glitching','soft');void document.body.offsetWidth;document.body.classList.toggle('soft',soft);document.body.classList.add('glitching');clearTimeout(glitchTimer);glitchTimer=setTimeout(()=>document.body.classList.remove('glitching'),520)}
 folder.addEventListener('click',()=>{toggleFolder();glitch()});
-setInterval(()=>{if(!document.hidden)glitch()},6000);document.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened){toggleFolder();folder.focus()}});
+setInterval(()=>{if(!document.hidden&&!document.body.classList.contains('glitching'))glitch(true)},3500);document.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened){toggleFolder();folder.focus()}});
 </script>
 </body></html>
