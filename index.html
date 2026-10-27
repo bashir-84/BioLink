@@ -25,9 +25,17 @@ h1{font-size:clamp(38px,7vw,58px);font-weight:400;letter-spacing:-2.4px;margin:0
 footer{margin-top:40px;color:#4f6758;font-size:10px;letter-spacing:1.4px} .footer-mark{color:#86bf98;margin:0 9px}noscript{display:block;padding:20px;color:#aacdb5}
 @media(max-width:480px){header{top:24px}main{padding-top:110px}.stage{height:355px}.folder{width:230px;height:165px;top:120px}.opened .stage{height:668px}.opened .card{top:calc(153px + var(--i)*84px)}footer{margin-top:28px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
+
+.intro{transition:opacity .45s ease,transform .45s ease}.opened .intro{opacity:0;transform:translateY(-8px);pointer-events:none}
+.glitch-overlay{position:fixed;inset:0;z-index:100;pointer-events:none;opacity:0;background:repeating-linear-gradient(0deg,transparent 0 3px,#b3ffdd12 4px,transparent 5px);mix-blend-mode:screen}
+body.glitching .glitch-overlay{animation:scan-glitch .52s steps(2,end)}
+body.glitching main,body.glitching header,body.glitching footer{animation:page-glitch .52s steps(2,end)}
+@keyframes scan-glitch{0%,100%{opacity:0;transform:translateX(0)}15%{opacity:.75;transform:translateX(-4px)}35%{opacity:.35;transform:translateX(4px)}55%{opacity:.6;transform:translateX(-2px)}75%{opacity:.2;transform:translateX(2px)}}
+@keyframes page-glitch{0%,100%{filter:none;translate:0}12%{filter:drop-shadow(3px 0 #ff486d) drop-shadow(-3px 0 #54dfff);translate:2px 0}24%{filter:hue-rotate(35deg);translate:-2px 0}38%{filter:drop-shadow(-3px 0 #ff486d) drop-shadow(3px 0 #54dfff);translate:3px 0}55%{filter:hue-rotate(-25deg);translate:-1px 0}70%{filter:drop-shadow(2px 0 #ff486d) drop-shadow(-2px 0 #54dfff)}}
+@media(prefers-reduced-motion:reduce){body.glitching .glitch-overlay,body.glitching main,body.glitching header,body.glitching footer{animation:none}}
 </style>
 </head>
-<body>
+<body><div class="glitch-overlay" aria-hidden="true"></div>
 <header><strong>bashir<span>.</span></strong><span>A LITTLE ABOUT ME</span></header>
 <main id="bio">
 <p class="eyebrow">MY PERSONAL CORNER</p><h1>Hi, I'm Bashir Amri<span>.</span></h1><p class="intro">A few things about me.<br>All in one little folder.</p>
@@ -43,14 +51,16 @@ footer{margin-top:40px;color:#4f6758;font-size:10px;letter-spacing:1.4px} .foote
 <li class="card" style="--i:5;--r:8deg"><a class="tile" href="mailto:bashiramri84@gmail.com"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span><span class="words"><b>Email</b><small>Email address</small></span><span class="arrow" aria-hidden="true">↗</span></a></li>
 </ul>
 </div>
-<p class="hint" id="hint" aria-live="polite">Click the folder to explore<span>یک کلیک، دنیای کوچک من</span></p>
+
 <noscript>Enable JavaScript to open the interactive folder. Links will be added soon.</noscript>
 <footer>MADE OF IDEAS <span class="footer-mark">✦</span> CONNECTED BY CURIOSITY</footer>
 </main>
 <script>
-const root=document.getElementById('bio'),folder=document.getElementById('folder'),links=document.getElementById('links'),hint=document.getElementById('hint');
+const root=document.getElementById('bio'),folder=document.getElementById('folder'),links=document.getElementById('links');
 let opened=false;
-function toggleFolder(){opened=!opened;root.classList.toggle('opened',opened);folder.setAttribute('aria-expanded',String(opened));folder.setAttribute('aria-label',opened?'Close my folder':'Open my folder');links.inert=!opened;links.setAttribute('aria-hidden',String(!opened));hint.replaceChildren(document.createTextNode(opened?'Click the folder to tuck everything away':'Click the folder to explore'));const sub=document.createElement('span');sub.lang='fa';sub.textContent=opened?'برای بستن، دوباره روی فولدر بزن':'یک کلیک، دنیای کوچک من';hint.append(sub)}
-folder.addEventListener('click',toggleFolder);document.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened){toggleFolder();folder.focus()}});
+function toggleFolder(){opened=!opened;root.classList.toggle('opened',opened);folder.setAttribute('aria-expanded',String(opened));folder.setAttribute('aria-label',opened?'Close my folder':'Open my folder');links.inert=!opened;links.setAttribute('aria-hidden',String(!opened));}
+let glitchTimer;
+function glitch(){if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.body.classList.remove('glitching');void document.body.offsetWidth;document.body.classList.add('glitching');clearTimeout(glitchTimer);glitchTimer=setTimeout(()=>document.body.classList.remove('glitching'),520)}
+folder.addEventListener('click',()=>{toggleFolder();glitch()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened){toggleFolder();folder.focus()}});
 </script>
 </body></html>
