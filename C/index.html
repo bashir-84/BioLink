@@ -1,33 +1,67 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#080e0c"><meta name="description" content="Bashir's personal corner. A little about me, my work and my links.">
-<title>Bashir — BioLink C</title>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080e0c"><meta name="description" content="Bashir Amri — visual design, video and motion. Explore selected work and get in touch.">
+<title>Bashir Amri — Digital desk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&display=optional" rel="stylesheet">
 <style>
-*{box-sizing:border-box} :root{color-scheme:dark;--green:#95f3bd;--ease:cubic-bezier(.22,1,.36,1)}
-body{margin:0;background:#080e0c;color:#f0f5f1;font-family:Arial,sans-serif;min-height:100svh;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 46%,#184b323b,transparent 53%)}
-header{position:absolute;top:30px;left:6%;right:6%;display:flex;align-items:center;justify-content:space-between;font-size:12px;letter-spacing:.06em;color:#87978e}header strong{font-size:17px;color:#dbe9df;letter-spacing:-.6px}header strong span{color:var(--green)}
-main{position:relative;max-width:660px;margin:auto;padding:110px 24px 35px;text-align:center}
-.eyebrow{font-size:10px;letter-spacing:3px;color:#9db7a7;margin:0 0 18px}.eyebrow:before{content:"";display:inline-block;width:5px;height:5px;background:var(--green);border-radius:50%;margin:0 9px 2px 0}
-h1{font-size:clamp(38px,7vw,58px);font-weight:400;letter-spacing:-2.4px;margin:0 0 14px}h1 span{color:var(--green)}.intro{font-size:14px;color:#91a297;line-height:1.7;margin:0}
-.stage{position:relative;height:375px;perspective:1100px;transition:height .9s var(--ease)}
-.folder{position:absolute;top:125px;left:50%;width:260px;height:180px;transform:translateX(-50%) rotate(-6deg);transition:transform .9s var(--ease),top .9s var(--ease);border:0;background:transparent;padding:0;cursor:pointer;color:#dffff0;perspective:900px;isolation:isolate;-webkit-tap-highlight-color:transparent}
-.folder:focus-visible{outline:2px solid var(--green);outline-offset:22px;border-radius:20px}.folder:hover{transform:translateX(-50%) rotate(-3deg) translateY(-7px)}
+*{box-sizing:border-box} :root{color-scheme:dark;--green:#a9edc0;--ease:cubic-bezier(.22,1,.36,1)}
+body{margin:0;background:#080e0c;color:#edf5ef;font-family:Manrope,"Avenir Next","Trebuchet MS",sans-serif;font-weight:400;min-height:100svh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 36%,#245f3d30,transparent 65%)}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer}button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+a:focus-visible,button:focus-visible{outline:2px solid #baf9cb;outline-offset:5px;border-radius:10px}
+header{max-width:1100px;padding:24px 28px;margin:auto;display:flex;justify-content:space-between;align-items:center;position:relative}
+.wordmark{font-size:20px;font-weight:600;letter-spacing:-1px;min-height:44px;display:inline-flex;align-items:center}.wordmark span{color:var(--green)}
+.version{font-size:12px;color:#9fb4a5;border:1px solid #3b5142;border-radius:99px;padding:7px 12px}
+main{width:min(100% - 40px,600px);margin:32px auto 0;position:relative}
+.identity{text-align:center}h1{font-size:clamp(38px,7vw,64px);font-weight:600;letter-spacing:-2.4px;line-height:1.13;margin:0;text-wrap:balance}
+h1 span{color:var(--green)}.intro{font-size:clamp(14px,2.6vw,17px);line-height:1.65;color:#b3c9bb;margin:16px 0 0}
+.shortcuts{display:flex;justify-content:center;flex-wrap:wrap;gap:12px 24px;margin:15px 0 0}
+.shortcuts a{font-size:13px;min-height:44px;display:inline-flex;gap:9px;align-items:center;color:#c2d7c9}.shortcuts a:hover{color:#e5ffec}.shortcuts span{color:var(--green)}
+.folder-dock{position:relative;height:290px;perspective:1100px;transition:height .65s var(--ease)}
+.folder{position:absolute;top:65px;left:50%;width:260px;height:180px;transform:translateX(-50%) rotate(-5deg);transition:transform .65s var(--ease),top .65s var(--ease);border:0;background:none;padding:0;perspective:900px;isolation:isolate}
+.folder-art{position:absolute;inset:0;animation:folder-breathe 5s ease-in-out infinite}
 .back{position:absolute;inset:0;border-radius:16px;background:linear-gradient(135deg,#3e9b66,#103d29);box-shadow:inset 0 1px 1px #b0ffce88,0 24px 65px #0009}.back:before{content:"";position:absolute;left:0;top:-22px;width:102px;height:40px;border-radius:16px 18px 0 0;background:#3c8c5e;border-top:1px solid #a4efbe99}
 .paper{position:absolute;left:35px;top:-23px;width:155px;height:130px;border-radius:12px;background:linear-gradient(130deg,#dce9cd,#748c75);border:1px solid #e3ffda77;transform:rotate(-14deg);transition:transform .7s var(--ease),opacity .4s;box-shadow:0 5px 10px #0004}.paper.two{left:85px;top:-36px;transform:rotate(13deg);background:linear-gradient(135deg,#395745,#1b2e24)}.paper:after{content:"✦";display:block;font-size:45px;padding:20px;color:#d4ffdf}.paper.one:after{content:"↗";color:#33543c}
 .front{position:absolute;inset:12px -4px -5px;border-radius:14px 32px 19px 19px;background:linear-gradient(125deg,#7df2a459,#153e2dcc 75%);backdrop-filter:blur(14px);border:1px solid #9df9bd75;box-shadow:inset 1px 1px 2px #dcffdf70,inset -2px -2px 5px #65dc8b25,0 15px 30px #0005;transform-origin:bottom;transform:rotateX(-13deg);transition:transform .8s var(--ease);display:flex;align-items:flex-end;padding:24px;gap:10px;font-size:17px;letter-spacing:-.4px;text-align:left}.front small{margin-left:auto;font-size:10px;letter-spacing:1px;color:#adccb9}.folder:hover .front{transform:rotateX(-23deg)}
-.shadow{position:absolute;top:320px;left:50%;width:210px;height:22px;background:#4dcc7b20;filter:blur(20px);transform:translateX(-50%);transition:opacity .5s}
-.hint{margin:0;color:#a5b8ab;font-size:12px;letter-spacing:.3px;transition:opacity .3s}.hint span{display:block;color:#506458;font-size:10px;margin-top:10px}.cards{position:absolute;top:0;left:0;right:0;list-style:none;padding:0;margin:0;pointer-events:none}.card{position:absolute;top:125px;left:50%;width:170px;height:76px;opacity:0;transform:translateX(-50%) scale(.65) rotate(var(--r));transition:transform .95s var(--ease),top .95s var(--ease),width .95s var(--ease),opacity .25s;transition-delay:calc(var(--i)*65ms);z-index:3}
-.tile{height:100%;width:100%;display:flex;align-items:center;gap:15px;padding:15px 19px;border:1px solid #4b775d66;border-radius:17px;background:linear-gradient(110deg,#172d21f2,#101b16f5);box-shadow:0 8px 30px #0003;text-align:left;color:inherit;text-decoration:none;transition:background .2s,border-color .2s,translate .2s}.tile:hover{background:#203b2b;border-color:#85db9d99;translate:0 -2px}.icon{display:grid;place-items:center;width:40px;height:40px;flex-shrink:0;border-radius:12px;border:1px solid #8ce4a944;color:#b9e9c8;font-size:22px}.words{flex:1}.words b{font-weight:400;font-size:15px;display:block}.words small{font-size:10px;color:#859c8c;display:block;margin-top:6px}.arrow{color:#93c4a2;font-size:18px}.tile[aria-disabled=true]{cursor:default}.tile:focus-visible{outline:2px solid #bcf8cb;outline-offset:4px}
-.opened .stage{height:678px}.opened .folder{top:26px;transform:translateX(-50%) rotate(0) scale(.53)}.opened .folder .front{transform:rotateX(-38deg)}.opened .paper{transform:translateY(-60px) rotate(0);opacity:0}.opened .shadow{opacity:0}.opened .card{top:calc(165px + var(--i)*84px);width:min(100%,390px);opacity:1;transform:translateX(-50%) scale(1) rotate(0)}.opened .cards{pointer-events:auto}.opened .hint{color:#8db19a}
-footer{margin-top:40px;color:#4f6758;font-size:10px;letter-spacing:1.4px} .footer-mark{color:#86bf98;margin:0 9px}noscript{display:block;padding:20px;color:#aacdb5}
-@media(max-width:480px){header{top:24px}main{padding-top:110px}.stage{height:355px}.folder{width:230px;height:165px;top:120px}.opened .stage{height:668px}.opened .card{top:calc(153px + var(--i)*84px)}footer{margin-top:28px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
 
-.intro{transition:opacity .45s ease,transform .45s ease}.opened .intro{opacity:0;transform:translateY(-8px);pointer-events:none}
-
+.front{font-size:16px;padding:22px;gap:9px}.front small{font-size:11px;color:#e3ffeb;letter-spacing:0;padding:7px 9px;border:1px solid #b0f7c488;border-radius:99px;margin-left:auto;white-space:nowrap}
+@keyframes folder-breathe{0%,100%{translate:0 0}50%{translate:0 -5px}}
+@media(hover:hover){.folder:hover .front{transform:rotateX(-25deg)}.folder:hover .paper.one{transform:translateY(-7px) rotate(-16deg)}}
+.opened .folder-dock{height:144px}.opened .folder{top:8px;transform-origin:top center;transform:translateX(-50%) rotate(0) scale(.42)}.opened .folder-art{animation:none}
+.opened .front{transform:rotateX(-35deg)}.opened .paper{opacity:0;transform:translateY(-45px)}
+.close-control{position:absolute;left:50%;bottom:0;translate:-50% 0;border:0;background:none;min-height:44px;padding:10px 16px;color:#bdd6c5;font-size:13px;visibility:hidden;opacity:0;transition:opacity .25s}
+.opened .close-control{visibility:visible;opacity:1}
+.drawer{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .65s var(--ease),visibility .65s}
+.opened .drawer{grid-template-rows:1fr;visibility:visible}
+.drawer-inner{min-height:0;overflow:hidden;padding:0 4px}
+.section-label{display:flex;align-items:center;justify-content:space-between;color:#b6cfbf;font-size:12px;margin:16px 0 12px}
+.section-label span:last-child{color:#8faf9b}
+.reveal{opacity:0;transform:translateY(22px) scale(.985);transition:opacity .3s,transform .45s var(--ease);transition-delay:0s}
+.opened .reveal{opacity:1;transform:none;transition-delay:calc(90ms + var(--i,0)*55ms)}
+.featured{display:block;border:1px solid #42614c;border-radius:20px;background:linear-gradient(125deg,#1a2f23,#0e1b14);overflow:hidden}
+.featured-media{background:#15281d;position:relative;aspect-ratio:16/9}
+.featured-media img{display:block;width:100%;height:100%;object-fit:cover}
+.image-fallback{display:none;position:absolute;inset:0;align-items:center;justify-content:center;color:#a6c8b1}
+.featured-body{padding:20px 22px}.featured-heading{display:flex;gap:16px;justify-content:space-between;align-items:center}
+h2{font-size:23px;font-weight:600;letter-spacing:-.7px;margin:0}
+.project-role{color:#c1d6c7;font-size:13px;line-height:1.6;margin:9px 0 0}
+.project-summary{font-size:13px;color:#a6c0af;line-height:1.75;margin:6px 0 0}.project-action{display:inline-flex;align-items:center;gap:9px;margin-top:17px;color:#d5fce1;font-size:13px;min-height:28px}
+.featured:hover{border-color:#91bc9d}
+.action{display:flex;align-items:center;gap:14px;min-height:78px;margin-top:12px;padding:17px 20px;border:1px solid #3a5643;border-radius:16px;background:#112218;transition:background .2s,border-color .2s}
+.action:hover{background:#1b3124;border-color:#7aa789}.icon{width:40px;height:40px;flex-shrink:0;display:grid;place-items:center;border-radius:12px;background:#b0e6c00c;color:#bdeecd;border:1px solid #92c7a12b}
+.action strong{font-weight:600;font-size:16px;display:block}.action small{display:block;color:#afc7b7;line-height:1.6;font-size:13px;margin-top:3px}.action .arrow{margin-left:auto;color:#b8e6c6}
+.talk{background:#aeecc0;color:#102619;border-color:#b9f6cd}.talk:hover{background:#c3f5d0}.talk small{color:#294c36}.talk .icon{border-color:#32644344;color:#214c30;background:#3860440c}.talk .arrow{color:#214c30}
+.contact-note{font-size:12px;color:#a9c4b2;margin:10px 6px 0;line-height:1.7}
+.contact-note a{text-decoration:underline;text-underline-offset:3px;min-height:44px;display:inline-flex;align-items:center;padding:0 4px}
+.socials{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:23px;padding:16px 0;border-top:1px solid #2c4335}
+.socials a{display:inline-flex;gap:8px;align-items:center;min-height:44px;font-size:13px;color:#bdd1c3;padding:8px 11px;border-radius:10px}.socials a:hover{background:#203629}.socials svg{width:18px;height:18px}
+.portfolio-home{display:flex;justify-content:space-between;align-items:center;min-height:52px;font-size:13px;color:#aec7b7;border-top:1px solid #2c4335;padding:12px 5px}
+.bottom-close{display:block;min-height:44px;margin:18px auto 2px;padding:10px 22px;border:1px solid #3b5945;background:transparent;border-radius:99px;color:#b9d5c2;font-size:13px}
+footer{position:relative;max-width:600px;margin:26px auto;padding:0 24px 24px;text-align:center;font-size:12px;color:#9eb7a7}
+.version-nav{display:flex;justify-content:center;gap:8px;margin-top:18px}.version-nav a{display:grid;place-items:center;min-width:44px;min-height:44px;border:1px solid #354f3d;border-radius:50%;color:#b4cbbb}
+.version-nav [aria-current]{color:#dcffe7;border-color:#8ebe9c}
 .glitch-overlay{position:fixed;inset:0;z-index:100;pointer-events:none;opacity:0;overflow:hidden;isolation:isolate}
 .glitch-overlay::before,.glitch-overlay::after{content:"";position:absolute;inset:-3%;opacity:0;mix-blend-mode:screen;background:repeating-linear-gradient(to bottom,transparent 0 24px,rgba(185,255,206,.09) 25px 26px,transparent 27px 75px)}
 .glitch-overlay::before{background-color:rgba(44,135,79,.055)}.glitch-overlay::after{background-color:rgba(109,222,154,.045)}
@@ -38,15 +72,6 @@ footer{margin-top:40px;color:#4f6758;font-size:10px;letter-spacing:1.4px} .foote
 @keyframes glitchA{0%,100%{opacity:0;transform:none}10%{opacity:1;transform:translate(8px,-2px);clip-path:inset(12% 0 67% 0)}28%{transform:translate(-10px,2px);clip-path:inset(57% 0 22% 0)}52%{opacity:.8;transform:translate(5px);clip-path:inset(31% 0 52% 0)}77%{opacity:.6;transform:translate(-6px);clip-path:inset(76% 0 9% 0)}}
 @keyframes glitchB{0%,100%{opacity:0;transform:none}12%{opacity:1;transform:translate(-7px,2px);clip-path:inset(21% 0 59% 0)}35%{transform:translate(10px,-2px);clip-path:inset(62% 0 15% 0)}61%{transform:translate(-4px);clip-path:inset(42% 0 38% 0)}84%{opacity:.6;transform:translate(6px);clip-path:inset(83% 0 5% 0)}}
 @media(prefers-reduced-motion:reduce){.glitch-overlay,.glitch-overlay::before,.glitch-overlay::after{animation:none!important}}
-.telegram-fallback{display:none;font-size:12px;margin:8px 0 0}.opened .telegram-fallback{display:block}.telegram-fallback a{color:#93b59e;text-underline-offset:4px;padding:12px;display:inline-block}
-
-.folder-cta{color:#e3ffeb!important;border:1px solid #b0f7c488;border-radius:99px;padding:8px 10px;white-space:nowrap;transition:background .25s,transform .25s}
-.folder:hover .folder-cta,.folder:focus-visible .folder-cta{background:#a1eab63b;transform:translateY(-2px)}
-.folder:not(:hover) .folder-cta{animation:cta-pulse 2.8s ease-in-out infinite}
-.opened .folder-cta{animation:none!important}
-@keyframes cta-pulse{0%,100%{box-shadow:0 0 0 0 #94efaa00}50%{box-shadow:0 0 0 5px #94efaa24}}
-@media(prefers-reduced-motion:reduce){.folder:not(:hover) .folder-cta{animation:none}}
-
 /* Ambient overlay variations never transform the page content. */
 .glitch-overlay[data-mode="1"]::before{background:repeating-linear-gradient(to bottom,transparent 0 39px,rgba(164,255,193,.1) 40px 42px,transparent 43px 110px)}
 .glitch-overlay[data-mode="1"].active::before{animation-direction:reverse}
@@ -61,7 +86,7 @@ body.text-glitch.text-soft header,body.text-glitch.text-soft .eyebrow,body.text-
 @media(prefers-reduced-motion:reduce){body.text-glitch header,body.text-glitch .eyebrow,body.text-glitch h1{animation:none!important}}
 
 /* Folder and cards receive this effect only on an explicit folder action. */
-body.folder-glitch .folder,body.folder-glitch .tile{animation:folder-click-glitch .52s steps(2,end)}
+body.folder-glitch .folder{animation:folder-click-glitch .4s steps(2,end)}
 @keyframes folder-click-glitch{
 0%,100%{filter:none}
 12%{filter:drop-shadow(3px 0 #4f9870) drop-shadow(-3px 0 #a3e8be)}
@@ -71,88 +96,101 @@ body.folder-glitch .folder,body.folder-glitch .tile{animation:folder-click-glitc
 70%{filter:drop-shadow(2px 0 #4f9870) drop-shadow(-2px 0 #a3e8be)}
 }
 @media(prefers-reduced-motion:reduce){body.folder-glitch .folder,body.folder-glitch .tile{animation:none!important}}
-.version-nav{position:relative;z-index:5;display:flex;justify-content:center;gap:8px;margin:24px auto;padding-bottom:20px}.version-nav a{font:12px Arial;color:#a6c2af;text-decoration:none;padding:10px 16px;border:1px solid #385141;border-radius:99px}.version-nav a[aria-current]{background:#c4f5d1;color:#12251a}.version-nav a:focus-visible{outline:2px solid #b2f3c5;outline-offset:3px}
-body{background:#090f0c}
-main{padding-top:clamp(100px,13vh,145px)}
-h1{font-size:clamp(35px,6.5vw,56px);line-height:1.12;letter-spacing:-1.8px;text-wrap:balance}
-.intro{font-size:14px;line-height:1.8}
-.front{gap:8px;padding:22px;font-size:16px}
-.folder-cta{font-size:9px!important;padding:7px 9px}
-.words small{font-size:11px;line-height:1.4;color:#9bb5a5}
-.tile{border-color:#56776270;background:linear-gradient(120deg,#1a3024,#101d16)}
-.tile:hover{box-shadow:0 8px 28px #0005,0 0 18px #91efb00b}
-@media(max-width:480px){main{padding:100px 20px 24px}.opened .folder{top:8px}.opened .card{top:calc(130px + var(--i)*80px)}.opened .stage{height:618px}.card{height:72px}.words b{font-size:15px}.icon{width:36px;height:36px}.tile{gap:12px;padding:13px 16px}.front{padding:20px}}
 
-/* Experimental compact directory layout, retaining the folder interaction. */
-@media(min-width:640px){
-main{max-width:820px}
-.opened .card{width:calc(50% - 8px);left:0;top:calc(170px + var(--row)*90px);transform:none}
-.opened .card:nth-child(even){left:calc(50% + 8px)}
-.opened .stage{height:450px}
-}
-.opened .tile{border-radius:12px}
-.eyebrow{letter-spacing:4px}
-</style>
-</head>
-<body><div class="glitch-overlay" aria-hidden="true"></div>
-<header><strong>bashir<span>.</span></strong><span>A LITTLE ABOUT ME</span></header>
+body.text-glitch header{animation:none!important}
+body.text-glitch .identity h1{animation:title-glitch .4s steps(2,end)}
+body.text-glitch.text-soft .identity h1{animation:title-glitch-soft .4s steps(2,end)}
+body.folder-glitch .featured,body.folder-glitch .action{animation:folder-click-glitch .4s steps(2,end)}
+@media(max-width:480px){header{padding:15px 20px}main{margin-top:28px;width:calc(100% - 32px)}h1{letter-spacing:-1.5px}.folder{width:240px;height:170px}.folder-dock{height:278px}.front{padding:20px;font-size:15px}.featured-body{padding:18px}.action{padding:16px;gap:12px}.shortcuts{gap:8px 22px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+
+body:before{background:radial-gradient(ellipse at 50% 32%,#2d784d3d,transparent 48%),repeating-linear-gradient(0deg,transparent 0 47px,#b8f4c805 48px),repeating-linear-gradient(90deg,transparent 0 47px,#b8f4c805 48px)}
+body:after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.09;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");z-index:0}
+header,main,footer{z-index:1}.desk{position:relative;width:100%;height:290px;transition:height .65s var(--ease)}.desk .folder-dock{position:absolute;inset:0;height:100%}.opened .desk,.opened .desk .folder-dock{height:144px}
+.desk-decor,.collage,.tags{position:absolute;pointer-events:none;transition:opacity .4s,transform .6s var(--ease)}.desk-decor{inset:0;color:#8dc7a160;font-size:18px}.mark{position:absolute}.mark.one{left:6%;top:26%}.mark.two{right:6%;top:31%}.mark.three{right:13%;bottom:9%}
+.collage{border:1px solid #709b7b70;box-shadow:0 10px 30px #0006;font-size:11px;color:#c9ddcf}.photo{left:5%;top:35px;transform:rotate(-9deg);padding:8px;background:#1b3125;border-radius:5px;width:104px}.photo>span{display:block;margin:7px 0 2px;font-size:10px}.monogram{height:92px;display:grid;place-items:center;background:linear-gradient(145deg,#557b60,#203729);font-size:27px;color:#def5e3}
+.note{right:2%;top:40px;transform:rotate(8deg);width:120px;padding:14px;background:#c3dfbb;color:#274535;line-height:1.5;font-family:"Segoe Print","Comic Sans MS",cursive;font-size:14px}.note small{font:10px Manrope,sans-serif;display:block;margin-top:7px;color:#43624b}.status{left:5%;bottom:28px;padding:8px 10px;border-radius:30px;background:#1a3223;transform:rotate(-4deg);font-size:10px}
+.tags{right:0;bottom:27px;display:flex;gap:5px;transform:rotate(-4deg)}.tags span{border:1px solid #5d876a;background:#12271b;border-radius:3px;padding:5px 7px;font-size:10px;color:#cce5d3}.tags span:nth-child(2){border-radius:20px}.tags span:nth-child(3){border-style:dashed}
+.desk .folder{z-index:2}.preview-paper{overflow:hidden}.preview-paper:after{display:none}.preview-paper img{width:100%;height:100%;object-fit:cover;opacity:.85}@media(hover:hover){.folder:hover .preview-paper.one{transform:translate(-12px,-16px) rotate(-19deg)}.folder:hover .preview-paper.two{transform:translate(10px,-18px) rotate(18deg)}}
+.opened .collage,.opened .tags,.opened .desk-decor{opacity:0;transform:translateY(-12px) scale(.94);visibility:hidden}
+.star-button{position:absolute;left:calc(50% + 88px);top:42px;z-index:4;min-width:44px;min-height:44px;border:1px solid #9cd3ab80;border-radius:50%;background:#133524;color:#c9ffd6;font-size:22px}.opened .star-button{left:calc(50% + 58px);top:0}
+.surprise{position:absolute;z-index:8;top:5px;left:50%;transform:translateX(-50%);width:min(260px,90%);padding:16px;background:#e3f5dd;color:#193e2a;border-radius:14px;box-shadow:0 12px 40px #0009;text-align:center}.surprise[hidden]{display:none}.surprise p{font-size:14px}.surprise button{color:#193e2a;border:1px solid #6d9879;background:none;border-radius:99px;min-width:72px;min-height:44px}
+.editorial-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:12px;margin-top:12px}.about-card,.experiment,.now-card{border:1px solid #48644f;border-radius:16px;background:#15271c;overflow:hidden;text-align:left}.about-card{padding:18px;display:flex;flex-direction:column;gap:15px}.about-monogram{width:64px;height:64px;display:grid;place-items:center;background:#365c41;font-size:24px;border-radius:8px;color:#e4fae9}.card-kicker{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:#a8cdb2}.editorial-grid h3{font-size:17px;line-height:1.3;margin:9px 0 6px;font-weight:600}.editorial-grid p{font-size:13px;line-height:1.6;color:#bacfc0;margin:0}
+.experiment a{height:100%;display:grid;grid-template-columns:42% 58%}.experiment-image{position:relative;min-height:140px;background:#183326}.experiment-image img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover}.exp-fallback{display:none;position:absolute;inset:0;align-items:center;justify-content:center;color:#a6c8b1;font-size:12px;padding:10px}.experiment-copy{padding:16px}.experiment-copy>span:last-child{display:block;margin-top:14px;font-size:12px;color:#bdecc9}.now-card{padding:16px}.now-card[hidden]{display:none}
+@media(max-width:480px){.photo{left:0;top:58px;width:65px;padding:5px}.monogram{height:55px;font-size:20px}.photo>span{font-size:8px}.note{right:0;top:51px;width:75px;padding:7px;font-size:10px}.note small{font-size:9px}.status{left:0;bottom:21px;font-size:9px}.tags{right:0;bottom:17px;gap:3px}.tags span{font-size:9px;padding:4px}.star-button{left:calc(50% + 72px);top:35px}.opened .star-button{left:calc(50% + 48px);top:0}.editorial-grid{grid-template-columns:1fr}.about-card{flex-direction:row;align-items:center}.experiment a{grid-template-columns:40% 60%}}
+@media(prefers-reduced-motion:reduce){.collage,.desk,.tags{transition:none!important}}
+</style></head><body>
+<div class="glitch-overlay" aria-hidden="true"></div>
+<header><a class="wordmark" href="https://bashiramri.ir/" aria-label="Bashir's main site">bashir<span>.</span></a><span class="version">Design C</span></header>
 <main id="bio">
-<p class="eyebrow">MY PERSONAL CORNER</p><h1>Hi, I'm Bashir Amri<span>.</span></h1><p class="intro">A few things about me.<br>All in one little folder.</p>
-<div class="stage">
-<div class="shadow" aria-hidden="true"></div>
-<button class="folder" id="folder" aria-label="Open my folder" aria-expanded="false" aria-controls="links"><span class="back" aria-hidden="true"></span><span class="paper one" aria-hidden="true"></span><span class="paper two" aria-hidden="true"></span><span class="front" aria-hidden="true"><span>✳</span> My little world <small class="folder-cta">OPEN ↗</small></span></button>
-<ul class="cards" id="links" inert aria-hidden="true">
-<li class="card" style="--row:0;--i:0;--r:-14deg"><a class="tile" href="tg://resolve?domain=bashiramrii"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" stroke="none" d="M21.5 4.3 18.4 19c-.2 1-1 1.2-1.8.7l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.4-4.9 8.9-8c.4-.4-.1-.6-.6-.3L6.1 13l-4.7-1.5c-1-.3-1-1 .2-1.5L20 2.9c.9-.3 1.7.2 1.5 1.4Z"/></svg></span><span class="words"><b>Telegram</b><small>Preferred for business inquiries</small></span><span class="arrow" aria-hidden="true">↗</span></a></li>
-<li class="card" style="--row:0;--i:1;--r:10deg"><a class="tile" href="https://bashiramri.ir/" target="_blank" rel="noopener noreferrer"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 4 6 4 9s-1 6-4 9c-3-3-4-6-4-9s1-6 4-9z"/></svg></span><span class="words"><b>Website</b><small>Explore my website</small></span><span class="arrow" aria-hidden="true">↗</span></a></li>
-<li class="card" style="--row:1;--i:2;--r:-8deg"><a class="tile" href="https://bashiramri.ir/studio/en/archive/" target="_blank" rel="noopener noreferrer"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><span class="words"><b>Project archive</b><small>A collection of my work</small></span><span class="arrow" aria-hidden="true">↗</span></a></li>
-<li class="card" style="--row:1;--i:3;--r:15deg"><a class="tile" href="https://www.instagram.com/bashir_amri84/" target="_blank" rel="noopener noreferrer"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg></span><span class="words"><b>Instagram</b><small>Follow along</small></span><span class="arrow" aria-hidden="true">↗</span></a></li>
-<li class="card" style="--row:2;--i:4;--r:-10deg"><a class="tile" href="https://www.linkedin.com/in/bashiramri/" target="_blank" rel="noopener noreferrer"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" stroke="none" d="M5 3.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM3.4 9h3.2v11H3.4zM9 9h3.1v1.5h.1A3.4 3.4 0 0 1 15.3 8.7c3.3 0 3.9 2.1 3.9 4.9V20H16v-5.7c0-1.4 0-3.1-1.9-3.1s-2.1 1.5-2.1 3V20H9z"/></svg></span><span class="words"><b>LinkedIn</b><small>Connect professionally</small></span><span class="arrow" aria-hidden="true">↗</span></a></li>
-<li class="card" style="--row:2;--i:5;--r:8deg"><a class="tile" href="mailto:bashiramri84@gmail.com"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span><span class="words"><b>Email</b><small>Email address</small></span><span class="arrow" aria-hidden="true">↗</span></a></li>
-</ul>
-</div>
-<p class="telegram-fallback"><a href="https://t.me/bashiramrii" target="_blank" rel="noopener noreferrer">Telegram not opening? Open web link ↗</a></p>
-
-<noscript>Enable JavaScript to open the interactive folder. Links will be added soon.</noscript>
-<footer>MADE OF IDEAS <span class="footer-mark">✦</span> CONNECTED BY CURIOSITY</footer>
+<div class="identity"><h1>Bashir Amri<span>.</span></h1><p class="intro">Visual design, video &amp; motion.</p>
+<nav class="shortcuts" aria-label="Quick links"><a href="https://bashiramri.ir/studio/en/archive/">Explore my work <span aria-hidden="true">↗</span></a><a href="https://t.me/bashiramrii">Let’s talk <span aria-hidden="true">↗</span></a></nav></div>
+<div class="desk"><div class="desk-decor" aria-hidden="true"><span class="mark one">✳</span><span class="mark two">＋</span><span class="mark three">○</span></div><div class="collage photo"><div class="monogram">BA</div><span>Visual notes / BA</span></div><div class="collage note">Keep making.<br>Keep exploring.<small>A note to myself</small></div><div class="collage status">● &nbsp;LET’S CONNECT</div><div class="tags" aria-label="Creative disciplines"><span>Design</span><span>Motion</span><span>Video</span></div><div class="folder-dock">
+<button class="folder" id="folder" aria-label="Open my folder" aria-expanded="false" aria-controls="contents"><span class="folder-art" aria-hidden="true"><span class="back"></span><span class="paper one preview-paper"><img src="https://bashiramri.ir/studio/media/work/podcast-azadi/hero.jpg" alt=""></span><span class="paper two preview-paper"><img src="https://bashiramri.ir/studio/media/work/podcast-azadi/output-01.jpg" alt=""></span><span class="front"><span>✳</span> My little world <small id="folder-tag">Open ↗</small></span></span></button>
+<button class="close-control" type="button" data-close aria-controls="contents" tabindex="-1">Close folder <span aria-hidden="true">↑</span></button>
+<button class="star-button" type="button" id="star" aria-label="Open a small surprise" aria-expanded="false" aria-controls="surprise">✳</button><div class="surprise" id="surprise" hidden><span>✦</span><p>A little room for curiosity.</p><button type="button" id="close-surprise">Close</button></div></div></div>
+<section class="drawer" id="contents" inert aria-hidden="true" aria-label="Inside my folder"><div class="drawer-inner">
+<div class="section-label reveal" style="--i:0"><span>Selected project</span><span>01 / Inside the folder</span></div>
+<a class="featured reveal" style="--i:0" href="https://bashiramri.ir/studio/en/work/podcast-azadi/">
+<div class="featured-media"><img id="featured-image" src="https://bashiramri.ir/studio/media/work/podcast-azadi/hero.jpg" width="1920" height="1080" alt="A conversation recorded for Podcast Azadi" decoding="async"><span class="image-fallback">Podcast Azadi · View project ↗</span></div>
+<div class="featured-body"><div class="featured-heading"><h2>Podcast Azadi</h2><span aria-hidden="true">↗</span></div><p class="project-role">Video &amp; motion · Format design</p><p class="project-summary">A visual production system for conversations about music.</p><span class="project-action">View project <span aria-hidden="true">↗</span></span></div>
+</a>
+<div class="editorial-grid"><article class="about-card reveal" style="--i:1"><div class="about-monogram" aria-hidden="true">BA</div><div><span class="card-kicker">About</span><h3>Bashir Amri</h3><p>Visual design, video &amp; motion.</p></div></article><article class="experiment reveal" style="--i:2"><a href="https://bashiramri.ir/studio/en/archive/"><div class="experiment-image"><img src="https://lh3.googleusercontent.com/d/1BHd7cVoe71B-ZVP8tIfj5Es_dJ1YouJw" alt="Cover artwork for Nemikham Bemiram" loading="lazy" width="600" height="600"><span class="exp-fallback">Explore the archive ↗</span></div><div class="experiment-copy"><span class="card-kicker">From the archive</span><h3>Nemikham Bemiram</h3><p>Music cover · Graphic design</p><span>Explore the archive ↗</span></div></a></article><article class="now-card reveal" id="now-card" style="--i:3" hidden><span class="card-kicker">Currently</span><p id="now-text"></p><small id="now-date"></small></article></div>
+<a class="action reveal" style="--i:1" href="https://bashiramri.ir/studio/en/archive/"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><span><strong>Explore my work</strong><small>More video, motion &amp; visual projects</small></span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="action talk reveal" style="--i:2" href="tg://resolve?domain=bashiramrii"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" stroke="none" d="M21.5 4.3 18.4 19c-.2 1-1 1.2-1.8.7l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.4-4.9 8.9-8c.4-.4-.1-.6-.6-.3L6.1 13l-4.7-1.5c-1-.3-1-1 .2-1.5L20 2.9c.9-.3 1.7.2 1.5 1.4Z"/></svg></span><span><strong>Let’s talk</strong><small>For projects &amp; collaborations · Telegram</small></span><span class="arrow" aria-hidden="true">↗</span></a>
+<p class="contact-note reveal" style="--i:2">Prefer a browser? <a href="https://t.me/bashiramrii" target="_blank" rel="noopener noreferrer">Open Telegram on the web ↗</a></p>
+<nav class="socials reveal" style="--i:3" aria-label="Elsewhere"><a href="https://www.instagram.com/bashir_amri84/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a><a href="https://www.linkedin.com/in/bashiramri/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" stroke="none" d="M5 3.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM3.4 9h3.2v11H3.4zM9 9h3.1v1.5h.1A3.4 3.4 0 0 1 15.3 8.7c3.3 0 3.9 2.1 3.9 4.9V20H16v-5.7c0-1.4 0-3.1-1.9-3.1s-2.1 1.5-2.1 3V20H9z"/></svg>LinkedIn</a><a href="mailto:bashiramri84@gmail.com"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>Email</a></nav>
+<a class="portfolio-home reveal" style="--i:4" href="https://bashiramri.ir/"><span>My main site <span aria-hidden="true">·</span> Work &amp; projects</span><span aria-hidden="true">↗</span></a>
+<button class="bottom-close" type="button" data-close>Close folder ↑</button>
+</div></section>
+<noscript><p>Use the direct work and Telegram links above. Enable JavaScript to explore the folder.</p></noscript>
 </main>
+<footer>A little world of ideas.<nav class="version-nav" aria-label="Design versions"><a href="../A/">A</a><a href="../B/">B</a><a href="../C/" aria-current="page">C</a></nav></footer>
 <script>
-const root=document.getElementById('bio'),folder=document.getElementById('folder'),links=document.getElementById('links');
-let opened=false;
-function toggleFolder(){opened=!opened;root.classList.toggle('opened',opened);folder.setAttribute('aria-expanded',String(opened));folder.setAttribute('aria-label',opened?'Close my folder':'Open my folder');links.inert=!opened;links.setAttribute('aria-hidden',String(!opened));}
-
-
-const glitchLayer=document.querySelector('.glitch-overlay');
-const motion=window.matchMedia('(prefers-reduced-motion: reduce)');
-let overlayTimer,textTimer,overlayMode=0,lastFolderAction=0;
-function clearOverlay(){clearTimeout(overlayTimer);glitchLayer.classList.remove('active','soft')}
+const root=document.getElementById('bio'),folder=document.getElementById('folder'),contents=document.getElementById('contents');
+const closeButtons=[...document.querySelectorAll('[data-close]')],topClose=document.querySelector('.close-control'),tag=document.getElementById('folder-tag');
+const motion=window.matchMedia('(prefers-reduced-motion: reduce)'),layer=document.querySelector('.glitch-overlay');
+let opened=false,overlayTimer,textTimer,folderTimer,mode=0,lastAction=-1000;
+function clearOverlay(){clearTimeout(overlayTimer);layer.classList.remove('active','soft')}
 function clearText(){clearTimeout(textTimer);document.body.classList.remove('text-glitch','text-soft')}
-function ambientGlitch(){
- if(document.hidden||motion.matches)return;
- clearOverlay();glitchLayer.dataset.mode=String(overlayMode++%3);
- void glitchLayer.offsetWidth;glitchLayer.classList.add('soft','active');
- overlayTimer=setTimeout(clearOverlay,420);
+function clearFolder(){clearTimeout(folderTimer);document.body.classList.remove('folder-glitch')}
+function clearEffects(){clearOverlay();clearText();clearFolder()}
+function textGlitch(soft){clearText();if(motion.matches||document.hidden)return;void document.body.offsetWidth;document.body.classList.toggle('text-soft',soft);document.body.classList.add('text-glitch');textTimer=setTimeout(clearText,420)}
+function setOpen(next){
+ if(!document.getElementById("surprise").hidden){document.getElementById("surprise").hidden=true;document.getElementById("star").setAttribute("aria-expanded","false")}
+ if(next===opened||performance.now()-lastAction<180)return;
+ const active=document.activeElement;
+ if(!next&&(contents.contains(active)||closeButtons.includes(active)))folder.focus({preventScroll:true});
+ opened=next;lastAction=performance.now();clearEffects();
+ root.classList.toggle('opened',opened);folder.setAttribute('aria-expanded',String(opened));folder.setAttribute('aria-label',opened?'Close my folder':'Open my folder');
+ contents.inert=!opened;contents.setAttribute('aria-hidden',String(!opened));topClose.tabIndex=opened?0:-1;tag.textContent=opened?'Close ↑':'Open ↗';
+ textGlitch(false);
+ if(!motion.matches&&!document.hidden){void folder.offsetWidth;document.body.classList.add('folder-glitch');folderTimer=setTimeout(clearFolder,540)}
+ // Keep the folder's control in view if closing from the bottom of the content.
+ if(!next){const limit=window.scrollY+folder.getBoundingClientRect().top-100;if(window.scrollY>limit)window.scrollTo({top:Math.max(0,limit),behavior:motion.matches?'instant':'smooth'})}
 }
-function textGlitch(soft=false){
- if(document.hidden||motion.matches)return;
- clearText();void document.body.offsetWidth;
- document.body.classList.toggle('text-soft',soft);document.body.classList.add('text-glitch');
- textTimer=setTimeout(clearText,420);
-}
-let folderGlitchTimer;
-function clearFolderGlitch(){clearTimeout(folderGlitchTimer);document.body.classList.remove('folder-glitch')}
-function activateFolder(){
- lastFolderAction=Date.now();toggleFolder();textGlitch(false);
- clearFolderGlitch();
- if(!motion.matches&&!document.hidden){
-  void folder.offsetWidth;document.body.classList.add('folder-glitch');
-  folderGlitchTimer=setTimeout(clearFolderGlitch,540);
- }
-}
-folder.addEventListener('click',activateFolder);
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened){activateFolder();folder.focus()}});
-setInterval(ambientGlitch,2000);
-setInterval(()=>{if(Date.now()-lastFolderAction>1200)textGlitch(true)},2000);
-document.addEventListener('visibilitychange',()=>{if(document.hidden){clearOverlay();clearText();clearFolderGlitch()}});
-if(motion.addEventListener)motion.addEventListener('change',()=>{clearOverlay();clearText();clearFolderGlitch()});
-</script>
-<nav aria-label="Design versions" class="version-nav"><a href="../A/" >A</a><a href="../B/" >B</a><a href="../C/" aria-current="page">C</a></nav></body></html>
+folder.addEventListener('click',()=>setOpen(!opened));closeButtons.forEach(button=>button.addEventListener('click',()=>setOpen(false)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened){setOpen(false);folder.focus({preventScroll:true})}});
+let idleUntil=0;
+document.addEventListener('pointerdown',()=>{idleUntil=performance.now()+900;clearOverlay()},{passive:true});
+window.addEventListener('scroll',()=>{idleUntil=performance.now()+600;clearOverlay()},{passive:true});
+setInterval(()=>{
+ if(document.hidden||motion.matches||performance.now()<idleUntil||performance.now()-lastAction<1000)return;
+ clearOverlay();layer.dataset.mode=String(mode++%3);void layer.offsetWidth;layer.classList.add('soft','active');overlayTimer=setTimeout(clearOverlay,420);
+ textGlitch(true);
+},3000);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)clearEffects()});
+if(motion.addEventListener)motion.addEventListener('change',clearEffects);
+const image=document.getElementById('featured-image');
+image.addEventListener('error',()=>{image.hidden=true;image.style.display='none';document.querySelector('.image-fallback').style.display='flex'});
+
+/* Populate both values with verified current information to show the NOW card. */
+const nowContent={text:'',updated:''};
+if(nowContent.text.trim()&&nowContent.updated.trim()){document.getElementById('now-text').textContent=nowContent.text;document.getElementById('now-date').textContent='Updated '+nowContent.updated;document.getElementById('now-card').hidden=false}
+const star=document.getElementById('star'),surprise=document.getElementById('surprise'),closeSurprise=document.getElementById('close-surprise');
+function showSurprise(show){surprise.hidden=!show;star.setAttribute('aria-expanded',String(show));if(show)closeSurprise.focus();else star.focus()}
+star.addEventListener('click',()=>showSurprise(surprise.hidden));closeSurprise.addEventListener('click',()=>showSurprise(false));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!surprise.hidden){e.stopImmediatePropagation();showSurprise(false)}},true);
+const expImg=document.querySelector('.experiment-image img');
+expImg.addEventListener('error',()=>{expImg.style.display='none';document.querySelector('.exp-fallback').style.display='flex'});
+</script></body></html>
