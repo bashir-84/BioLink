@@ -31,8 +31,8 @@ footer{margin-top:40px;color:#4f6758;font-size:10px;letter-spacing:1.4px} .foote
 .glitch-overlay{position:fixed;inset:0;z-index:100;pointer-events:none;opacity:0;overflow:hidden;isolation:isolate}
 .glitch-overlay::before,.glitch-overlay::after{content:"";position:absolute;inset:-3%;opacity:0;mix-blend-mode:screen;background:repeating-linear-gradient(to bottom,transparent 0 24px,rgba(185,255,206,.09) 25px 26px,transparent 27px 75px)}
 .glitch-overlay::before{background-color:rgba(44,135,79,.055)}.glitch-overlay::after{background-color:rgba(109,222,154,.045)}
-.glitch-overlay.active{animation:glitchFlash 850ms steps(1,end)}.glitch-overlay.active::before{animation:glitchA 850ms steps(1,end)}.glitch-overlay.active::after{animation:glitchB 850ms steps(1,end)}
-.glitch-overlay.soft{opacity:0}.glitch-overlay.soft.active{animation:glitchFlashSoft 850ms steps(1,end)}
+.glitch-overlay.active{animation:glitchFlash 400ms steps(1,end)}.glitch-overlay.active::before{animation:glitchA 400ms steps(1,end)}.glitch-overlay.active::after{animation:glitchB 400ms steps(1,end)}
+.glitch-overlay.soft{opacity:0}.glitch-overlay.soft.active{animation:glitchFlashSoft 400ms steps(1,end)}
 @keyframes glitchFlash{0%,100%{opacity:0}9%,74%{opacity:.8}20%,32%,85%{opacity:.2}}
 @keyframes glitchFlashSoft{0%,100%{opacity:0}9%,74%{opacity:.38}20%,32%,85%{opacity:.1}}
 @keyframes glitchA{0%,100%{opacity:0;transform:none}10%{opacity:1;transform:translate(8px,-2px);clip-path:inset(12% 0 67% 0)}28%{transform:translate(-10px,2px);clip-path:inset(57% 0 22% 0)}52%{opacity:.8;transform:translate(5px);clip-path:inset(31% 0 52% 0)}77%{opacity:.6;transform:translate(-6px);clip-path:inset(76% 0 9% 0)}}
@@ -54,25 +54,10 @@ footer{margin-top:40px;color:#4f6758;font-size:10px;letter-spacing:1.4px} .foote
 .glitch-overlay[data-mode="2"]::before{background:repeating-linear-gradient(to bottom,transparent 0 65px,rgba(125,223,162,.12) 66px 67px,transparent 68px 135px)}
 .glitch-overlay[data-mode="2"]::after{background:repeating-linear-gradient(to right,transparent 0 130px,rgba(105,220,144,.07) 131px 133px,transparent 134px 240px)}
 /* The second effect is restricted to the upper typography. */
-body.text-glitch header,body.text-glitch .eyebrow,body.text-glitch h1{animation:title-glitch .45s steps(1,end) 2}
-body.text-glitch.text-soft header,body.text-glitch.text-soft .eyebrow,body.text-glitch.text-soft h1{animation:title-glitch-soft .4s steps(1,end) 2}
-@keyframes title-glitch{
-0%,100%{filter:none;translate:0}
-12%{filter:drop-shadow(6px 0 #4f9870) drop-shadow(-5px 0 #a3e8be);translate:3px 0}
-26%{filter:drop-shadow(-5px 1px #4f9870) drop-shadow(5px -1px #a3e8be);translate:-4px 0}
-42%{filter:hue-rotate(12deg);translate:2px -1px}
-58%{filter:drop-shadow(5px 0 #4f9870) drop-shadow(-6px 0 #a3e8be);translate:-3px 1px}
-76%{filter:drop-shadow(-4px 0 #4f9870) drop-shadow(4px 0 #a3e8be);translate:2px 0}
-88%{filter:none;translate:0}
-}
-@keyframes title-glitch-soft{
-0%,100%{filter:none;translate:0}
-14%{filter:drop-shadow(4px 0 #4f9870) drop-shadow(-4px 0 #a3e8be);translate:2px 0}
-30%{filter:drop-shadow(-4px 0 #4f9870) drop-shadow(3px 0 #a3e8be);translate:-3px 0}
-48%{filter:hue-rotate(8deg);translate:1px -1px}
-62%{filter:drop-shadow(4px 0 #4f9870) drop-shadow(-3px 0 #a3e8be);translate:-2px 1px}
-80%{filter:drop-shadow(-3px 0 #4f9870) drop-shadow(3px 0 #a3e8be);translate:1px 0}
-}
+body.text-glitch header,body.text-glitch .eyebrow,body.text-glitch h1{animation:title-glitch .4s steps(2,end)}
+body.text-glitch.text-soft header,body.text-glitch.text-soft .eyebrow,body.text-glitch.text-soft h1{animation:title-glitch-soft .4s steps(2,end)}
+@keyframes title-glitch{0%,100%{filter:none;translate:0}12%{filter:drop-shadow(3px 0 #4f9870) drop-shadow(-3px 0 #a3e8be);translate:2px 0}24%{filter:hue-rotate(10deg);translate:-2px 0}38%{filter:drop-shadow(-3px 0 #4f9870) drop-shadow(3px 0 #a3e8be);translate:3px 0}55%{filter:hue-rotate(-10deg);translate:-1px 0}70%{filter:drop-shadow(2px 0 #4f9870) drop-shadow(-2px 0 #a3e8be)}}
+@keyframes title-glitch-soft{0%,100%{filter:none;translate:0}25%{filter:drop-shadow(1px 0 #4f9870) drop-shadow(-1px 0 #a3e8be);translate:1px 0}55%{filter:hue-rotate(4deg);translate:-1px 0}}
 @media(prefers-reduced-motion:reduce){body.text-glitch header,body.text-glitch .eyebrow,body.text-glitch h1{animation:none!important}}
 
 /* Folder and cards receive this effect only on an explicit folder action. */
@@ -124,13 +109,13 @@ function ambientGlitch(){
  if(document.hidden||motion.matches)return;
  clearOverlay();glitchLayer.dataset.mode=String(overlayMode++%3);
  void glitchLayer.offsetWidth;glitchLayer.classList.add('soft','active');
- overlayTimer=setTimeout(clearOverlay,880);
+ overlayTimer=setTimeout(clearOverlay,420);
 }
 function textGlitch(soft=false){
  if(document.hidden||motion.matches)return;
  clearText();void document.body.offsetWidth;
  document.body.classList.toggle('text-soft',soft);document.body.classList.add('text-glitch');
- textTimer=setTimeout(clearText,soft?830:930);
+ textTimer=setTimeout(clearText,420);
 }
 let folderGlitchTimer;
 function clearFolderGlitch(){clearTimeout(folderGlitchTimer);document.body.classList.remove('folder-glitch')}
@@ -144,7 +129,7 @@ function activateFolder(){
 }
 folder.addEventListener('click',activateFolder);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened){activateFolder();folder.focus()}});
-setInterval(ambientGlitch,2200);
+setInterval(ambientGlitch,2000);
 setInterval(()=>{if(Date.now()-lastFolderAction>1200)textGlitch(true)},2000);
 document.addEventListener('visibilitychange',()=>{if(document.hidden){clearOverlay();clearText();clearFolderGlitch()}});
 if(motion.addEventListener)motion.addEventListener('change',()=>{clearOverlay();clearText();clearFolderGlitch()});
