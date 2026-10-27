@@ -29,8 +29,8 @@ footer{margin-top:40px;color:#4f6758;font-size:10px;letter-spacing:1.4px} .foote
 .intro{transition:opacity .45s ease,transform .45s ease}.opened .intro{opacity:0;transform:translateY(-8px);pointer-events:none}
 
 .glitch-overlay{position:fixed;inset:0;z-index:100;pointer-events:none;width:100%;height:100%;image-rendering:pixelated}
-body.glitching main,body.glitching header{filter:url(#pixel-displace)}
-@media(prefers-reduced-motion:reduce){body.glitching main,body.glitching header{filter:none}.glitch-overlay{display:none}}
+.pixel-active{filter:url(#pixel-displace)}
+@media(prefers-reduced-motion:reduce){.pixel-active{filter:none}.glitch-overlay{display:none}}
 .telegram-fallback{display:none;font-size:12px;margin:8px 0 0}.opened .telegram-fallback{display:block}.telegram-fallback a{color:#93b59e;text-underline-offset:4px;padding:12px;display:inline-block}
 </style>
 </head>
@@ -61,22 +61,24 @@ const root=document.getElementById('bio'),folder=document.getElementById('folder
 let opened=false;
 function toggleFolder(){opened=!opened;root.classList.toggle('opened',opened);folder.setAttribute('aria-expanded',String(opened));folder.setAttribute('aria-label',opened?'Close my folder':'Open my folder');links.inert=!opened;links.setAttribute('aria-hidden',String(!opened));}
 
-let glitchTimer,glitchFrame;
+let glitchTimer,glitchFrame,activeObject=null,objectIndex=0;
+let settleUntil=0;
 const overlay=document.getElementById('pixel-overlay'),ctx=overlay.getContext('2d');
 const map=document.createElement('canvas');map.width=64;map.height=64;
 const mapCtx=map.getContext('2d'),mapImage=document.getElementById('pixel-map'),shift=document.getElementById('pixel-shift');
-function clearGlitch(){cancelAnimationFrame(glitchFrame);clearTimeout(glitchTimer);document.body.classList.remove('glitching');shift.setAttribute('scale','0');ctx.clearRect(0,0,overlay.width,overlay.height)}
-function glitch(soft=false){
+function clearGlitch(){if(activeObject)activeObject.classList.remove('pixel-active');activeObject=null;cancelAnimationFrame(glitchFrame);clearTimeout(glitchTimer);document.body.classList.remove('glitching');shift.setAttribute('scale','0');ctx.clearRect(0,0,overlay.width,overlay.height)}
+function glitch(soft=false,object=folder){
  if(document.hidden||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
- clearGlitch();overlay.width=window.innerWidth;overlay.height=window.innerHeight;
+ clearGlitch();activeObject=object;activeObject.classList.add('pixel-active');overlay.width=window.innerWidth;overlay.height=window.innerHeight;
  const duration=soft?380:560,start=performance.now();
- const target=folder.getBoundingClientRect();
- const region=soft?target:root.getBoundingClientRect();
- const cell=soft?6:10;
- const particles=Array.from({length:soft?28:90},()=>({y:Math.random(),offset:(Math.random()-.5)*6,size:Math.random()>.7?2:1,brightness:Math.random()}));
+
+ const cell=soft?4:7;
+ const particles=Array.from({length:soft?16:40},()=>({y:Math.random(),offset:(Math.random()-.5)*6,size:Math.random()>.7?2:1,brightness:Math.random()}));
  function frame(now){
   const t=Math.min(1,(now-start)/duration);if(t>=1){clearGlitch();return}
   ctx.clearRect(0,0,overlay.width,overlay.height);
+  const region=object.getBoundingClientRect();
+  ctx.save();ctx.beginPath();ctx.rect(region.left,region.top,region.width,region.height);ctx.clip();
   mapCtx.fillStyle='rgb(128,128,128)';mapCtx.fillRect(0,0,64,64);
   const envelope=Math.sin(Math.PI*t),edge=region.left+region.width*t;
   for(const p of particles){
@@ -85,7 +87,8 @@ function glitch(soft=false){
    ctx.fillStyle='rgba(104,229,145,'+alpha+')';ctx.fillRect(x,y,cell*p.size,cell*p.size);
    if(p.brightness>.65){ctx.strokeStyle='rgba(161,255,185,'+(alpha*.8)+')';ctx.lineWidth=1;ctx.strokeRect(x+.5,y+.5,cell*p.size-1,cell*p.size-1)}
   }
-  // A narrow block-displacement band travels with the particles.
+  ctx.restore();
+  // Only the selected object receives displacement.
   for(let row=0;row<64;row+=3){
    mapCtx.fillStyle='rgb('+Math.round(128+Math.sin(row*3.1)*envelope*90)+',128,128)';
    mapCtx.fillRect(Math.floor(t*64),row,3,2);
@@ -97,7 +100,17 @@ function glitch(soft=false){
 }
 document.addEventListener('visibilitychange',()=>{if(document.hidden)clearGlitch()});
 window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',clearGlitch);
-folder.addEventListener('click',()=>{toggleFolder();glitch()});
-setInterval(()=>{if(!document.hidden&&!document.body.classList.contains('glitching'))glitch(true)},3500);document.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened){toggleFolder();folder.focus()}});
+folder.addEventListener('click',()=>{settleUntil=performance.now()+1300;toggleFolder();glitch(false,folder)});
+setInterval(()=>{
+ if(document.hidden||activeObject||performance.now()<settleUntil)return;
+ const candidates=(opened?Array.from(document.querySelectorAll('.tile')):[folder]).filter(el=>{
+ const r=el.getBoundingClientRect();
+ return r.top>=0&&r.bottom<=window.innerHeight&&r.width>0&&!el.matches(':hover')&&!el.contains(document.activeElement);
+ });
+ if(candidates.length)glitch(true,candidates[objectIndex++%candidates.length]);
+},3500);
+links.addEventListener('pointerdown',clearGlitch);
+links.addEventListener('focusin',clearGlitch);
+window.addEventListener('scroll',clearGlitch,{passive:true});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened){toggleFolder();folder.focus()}});
 </script>
 </body></html>
