@@ -129,39 +129,85 @@ header,main,footer{z-index:1}.desk{position:relative;width:100%;height:290px;tra
 .slide-controls{display:flex;justify-content:space-between;align-items:center;gap:2px}.slide-controls button{width:44px;min-height:44px;border:0;background:none;color:#c6efd2;font-size:18px}.slide-count{font-size:11px;color:#b3cabc}
 @media(max-width:480px){.archive-grid{gap:6px}.archive-slot{border-radius:12px}.slide-info{padding:7px 5px}.slide-info h3{font-size:12px;min-height:50px}.slide-info p{font-size:11px;min-height:32px}.slide-controls{flex-wrap:wrap;justify-content:center}.slide-controls button{width:44px}.slide-count{order:3;width:100%;text-align:center}.gallery-head h2{font-size:16px}}
 .archive-visual img,.archive-visual video{object-fit:cover}.archive-slot{aspect-ratio:4/5}.archive-visual{height:100%;aspect-ratio:auto}.archive-slot{position:relative}.archive-slot:focus-within{outline:2px solid #baf9cb;outline-offset:3px}
+/* C — a composed desk, with motion tied to interaction. */
+.collage,.tags{transition:none}
+.photo{left:0;top:50px;width:126px;padding:8px;border-radius:9px;background:linear-gradient(145deg,#243d2e,#14271d);transform:rotate(-7deg);border-color:#7bab8455;box-shadow:0 16px 40px #0005}
+.photo:before{content:"";position:absolute;width:43px;height:13px;top:-7px;left:38px;background:#a4c5a138;border:1px solid #d8f3ca22;transform:rotate(4deg)}
+.photo .monogram{height:110px;border-radius:4px;font-size:32px;letter-spacing:-2px;background:radial-gradient(ellipse at 30% 20%,#74978055,transparent 80%),#284633}
+.photo>span{font-size:11px;color:#b6cebe;margin:9px 1px 2px;letter-spacing:0}
+.note{right:0;top:66px;width:140px;padding:20px 15px 15px;border-radius:3px 3px 16px 3px;background:linear-gradient(140deg,#314b35,#203627);color:#e0edcf;border-color:#8eae785c;font-size:15px;transform:rotate(6deg);box-shadow:0 15px 35px #0004}
+.note:before{content:"";position:absolute;top:9px;left:15px;width:21px;height:2px;background:#b8d49580}
+.note small{color:#a0b996;font-size:10px;margin-top:10px}
+.status{display:none}
+.tags{right:4px;top:236px;bottom:auto;gap:0;padding:9px 12px;border:1px solid #557b604d;border-radius:12px;background:#14291dc9;transform:rotate(-3deg);align-items:center}
+.tags span,.tags span:nth-child(2),.tags span:nth-child(3){display:flex;align-items:center;gap:7px;border:0;background:none;border-radius:0;padding:0;font-size:11px;line-height:20px;color:#bcd1c2}
+.tags span+span{margin-left:12px}
+.discipline-mark{display:block;width:11px;height:11px;position:relative;color:#a7d6b3;animation:mark-accent 9s ease-in-out infinite;animation-delay:var(--delay,0s)}
+.mark-design{border:1px solid currentColor;rotate:45deg}.mark-motion{border:1px solid currentColor;border-radius:50%;--delay:3s}.mark-motion:after{content:"";position:absolute;width:3px;height:3px;background:currentColor;left:3px;top:3px;border-radius:50%}
+.mark-video{border:1px solid currentColor;border-radius:2px;--delay:6s}.mark-video:after{content:"";position:absolute;left:3px;top:2px;border-left:4px solid currentColor;border-top:3px solid transparent;border-bottom:3px solid transparent}
+@keyframes mark-accent{0%,20%,100%{opacity:.5;transform:translateY(0)}6%{opacity:1;transform:translateY(-2px)}12%{opacity:1;transform:translateY(0)}}
+.opened .collage,.opened .tags{opacity:1;visibility:visible}
+.opened .photo{transform:rotate(-5deg)}.opened .note{transform:rotate(4deg)}.opened .tags{transform:rotate(-2deg)}
+.opened .folder .front>span,.opened .folder .front small{opacity:0}
+.opened .folder .front{font-size:0}
+.close-control{font-size:13px;color:#d5e8db}
+.gallery-head{margin:12px 0 14px}.gallery-head h2{font-size:17px;color:#c8dece;letter-spacing:-.35px}
+.archive-showcase{position:relative}.archive-slot{border-color:#7aaa8a44;box-shadow:0 8px 24px #0003;transition:border-color .2s}
+.archive-slot:hover,.archive-slot:focus-within{border-color:#a9dcba}
+.archive-visual video{pointer-events:none}
+#gallery-pause{position:absolute;right:8px;bottom:8px;z-index:3;width:44px;height:44px;display:grid;place-items:center;padding:0;border:1px solid #d2efdc55;border-radius:50%;background:#0a1c12c9;backdrop-filter:blur(8px);color:#effbf2;transition:background .2s;box-shadow:0 3px 12px #0003}
+#gallery-pause:hover{background:#284d36}#gallery-pause[hidden]{display:none}
+#gallery-pause svg{width:17px;height:17px}.pause-play{display:none}#gallery-pause[aria-pressed="true"] .pause-bars{display:none}#gallery-pause[aria-pressed="true"] .pause-play{display:block}
+.editorial-grid:has(.now-card[hidden]){display:none}
+.socials{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;border:0;padding:0;margin:18px 0}
+.socials a{min-width:0;min-height:78px;justify-content:center;gap:10px;font-size:14px;color:#dceee1;border:1px solid #64846d70;background:linear-gradient(145deg,#233c2c,#14281c);border-radius:15px;padding:12px 8px;transition:transform .25s var(--ease),background .2s,border-color .2s}
+.socials svg{width:23px;height:23px;flex-shrink:0;color:#bde7c9}
+@media(hover:hover){.socials a:hover{transform:translateY(-3px);background:#284431;border-color:#a3cbb0}.action:hover .arrow{transform:translate(2px,-2px)}}
+.action .arrow{transition:transform .25s}.talk{margin-top:10px}.portfolio-home{margin-top:0}.bottom-close{margin-top:22px}
 @media(min-width:1100px){
-.opened .collage,.opened .tags{opacity:1;visibility:visible;transition:opacity .4s,transform .6s var(--ease)}
-.opened .photo{position:fixed;left:calc(50% - 490px);top:34vh;transform:rotate(-8deg);width:130px}
-.opened .photo .monogram{height:114px}
-.opened .note{position:fixed;right:calc(50% - 490px);top:34vh;transform:rotate(6deg);width:145px}
-.opened .tags{position:fixed;right:calc(50% - 490px);top:62vh;bottom:auto;transform:rotate(-4deg)}
-.opened .status{position:fixed;left:calc(50% - 490px);top:62vh;bottom:auto;transform:rotate(-4deg)}
+ .opened .photo{position:fixed;left:calc(50% - 484px);top:clamp(245px,34vh,360px)}
+ .opened .note{position:fixed;right:calc(50% - 484px);top:clamp(250px,34vh,365px)}
+ .opened .tags{position:fixed;right:calc(50% - 504px);top:calc(clamp(250px,34vh,365px) + 150px);flex-direction:column;align-items:flex-start;width:160px;padding:14px 17px;gap:10px}
+ .opened .tags span+span{margin-left:0}
 }
-@media(max-width:1099px){
-.opened .desk{height:215px}
-.opened .photo,.opened .note,.opened .tags{opacity:1;visibility:visible}
-.opened .photo{left:0;top:50px;width:75px;padding:5px;transform:rotate(-7deg)}
-.opened .photo .monogram{height:65px;font-size:22px}
-.opened .photo>span{font-size:9px}
-.opened .note{right:0;top:48px;width:90px;padding:9px;font-size:12px;transform:rotate(6deg)}
-.opened .tags{right:0;bottom:8px;transform:rotate(-3deg)}
+@media(min-width:481px) and (max-width:1099px){
+ .opened .desk{height:205px}
+ .opened .photo{top:5px}.opened .note{top:16px}
+ .opened .tags{top:164px;right:0}
 }
+@media(max-width:480px){
+ .desk{height:357px}.desk .folder{top:44px;width:230px;height:164px}
+ .photo{left:10px;top:222px;width:80px;padding:6px;transform:rotate(-6deg)}
+ .photo:before{width:30px;left:20px;height:11px;top:-5px}
+ .photo .monogram{height:66px;font-size:25px}.photo>span{font-size:10px;margin:6px 0 1px}
+ .note{right:8px;top:230px;width:112px;padding:15px 10px 10px;font-size:13px;line-height:1.5;transform:rotate(5deg)}
+ .note:before{left:10px;top:7px;width:17px}.note small{font-size:9px;margin-top:6px}
+ .tags{top:324px;right:3px;padding:5px 9px;transform:rotate(-2deg)}.tags span{font-size:10px!important;gap:5px}.tags span+span{margin-left:10px}.discipline-mark{width:10px;height:10px}
+ .opened .desk{height:211px}.opened .desk .folder{top:8px}
+ .opened .photo{top:48px;left:0}.opened .note{top:58px;right:0;width:102px;font-size:12px}
+ .opened .tags{top:174px;right:3px}
+ .opened .folder-dock{height:152px}
+ .gallery-head{margin-top:4px;margin-bottom:12px}.gallery-head h2{font-size:16px}
+ .socials{gap:8px;margin-top:14px}.socials a{flex-direction:column;gap:8px;font-size:12px;min-height:84px;border-radius:13px}.socials svg{width:24px;height:24px}
+ .action{min-height:78px}.action strong{font-size:15px}.action small{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){.discipline-mark{animation:none!important}}
 </style></head><body>
 <div class="glitch-overlay" aria-hidden="true"></div>
 <header><a class="wordmark" href="https://bashiramri.ir/" aria-label="Bashir's main site">bashir<span>.</span></a><span class="version">Design C</span></header>
 <main id="bio">
 <div class="identity"><h1>Bashir Amri<span>.</span></h1><p class="intro">Visual design, video &amp; motion.</p>
 <nav class="shortcuts" aria-label="Quick links"><a href="https://bashiramri.ir/studio/en/archive/">Explore my work <span aria-hidden="true">↗</span></a><a href="https://t.me/bashiramrii">Let’s talk <span aria-hidden="true">↗</span></a></nav></div>
-<div class="desk"><div class="desk-decor" aria-hidden="true"><span class="mark one">✳</span><span class="mark two">＋</span><span class="mark three">○</span></div><div class="collage photo"><div class="monogram">BA</div><span>Visual notes / BA</span></div><div class="collage note">Keep making.<br>Keep exploring.<small>A little note</small></div><div class="collage status">● &nbsp;LET’S CONNECT</div><div class="tags" aria-label="Creative disciplines"><span>Design</span><span>Motion</span><span>Video</span></div><div class="folder-dock">
+<div class="desk"><div class="desk-decor" aria-hidden="true"><span class="mark one">✳</span><span class="mark two">＋</span><span class="mark three">○</span></div><div class="collage photo"><div class="monogram">BA</div><span>Bashir Amri</span></div><div class="collage note">Keep making.<br>Keep exploring.<small>A little note</small></div><div class="tags" aria-label="Creative disciplines"><span><i class="discipline-mark mark-design" aria-hidden="true"></i>Design</span><span><i class="discipline-mark mark-motion" aria-hidden="true"></i>Motion</span><span><i class="discipline-mark mark-video" aria-hidden="true"></i>Video</span></div><div class="folder-dock">
 <button class="folder" id="folder" aria-label="Open my folder" aria-expanded="false" aria-controls="contents"><span class="folder-art" aria-hidden="true"><span class="back"></span><span class="paper one preview-paper"><img src="https://lh3.googleusercontent.com/d/1bc7TI5WsOFAFVGopHU1x62PtXGfvWJoJ" alt=""></span><span class="paper two preview-paper"><img src="https://lh3.googleusercontent.com/d/1S_ryUZDk568uoZZMU-hWyO82m59XtrxB" alt=""></span><span class="front"><span>✳</span> My little world <small id="folder-tag">Open ↗</small></span></span></button>
 <button class="close-control" type="button" data-close aria-controls="contents" tabindex="-1">Close folder <span aria-hidden="true">↑</span></button>
 <button class="star-button" type="button" id="star" aria-label="Open a small surprise" aria-expanded="false" aria-controls="surprise">✳</button><div class="surprise" id="surprise" hidden><span>✦</span><p>A little room for curiosity.</p><button type="button" id="close-surprise">Close</button></div></div></div>
 <section class="drawer" id="contents" inert aria-hidden="true" aria-label="Inside my folder"><div class="drawer-inner">
-<section class="archive-showcase reveal" style="--i:0" aria-label="Automatic selected work slideshow"><div class="gallery-head"><h2>From my archive</h2><button type="button" id="gallery-pause" aria-pressed="false">Pause slideshow</button></div><div class="archive-grid"><article class="archive-slot" data-slot="0" aria-label="Archive collection 1"><div class="archive-visual"><a class="slide-link" href="https://bashiramri.ir/studio/en/archive/" aria-label="Explore RAH-81 in the archive"><img src="https://drive.google.com/thumbnail?id=138LjlEe-aM9GPpOarA4BsaOLHT73_dO7&sz=w640" width="600" height="750" alt="RAH-81" decoding="async"></a><video muted playsinline loop preload="none" hidden aria-label="Video work preview"></video></div></article><article class="archive-slot" data-slot="1" aria-label="Archive collection 2"><div class="archive-visual"><a class="slide-link" href="https://bashiramri.ir/studio/en/archive/" aria-label="Explore AATTRR 2 in the archive"><img src="https://lh3.googleusercontent.com/d/1DA5u01JhRjgNdQ6bjKDtCsM3-gQFuHAZ" width="600" height="750" alt="AATTRR 2" decoding="async"></a><video muted playsinline loop preload="none" hidden aria-label="Video work preview"></video></div></article><article class="archive-slot" data-slot="2" aria-label="Archive collection 3"><div class="archive-visual"><a class="slide-link" href="https://bashiramri.ir/studio/en/archive/" aria-label="Explore The Night in the archive"><img src="https://lh3.googleusercontent.com/d/1S_ryUZDk568uoZZMU-hWyO82m59XtrxB" width="600" height="750" alt="The Night" decoding="async"></a><video muted playsinline loop preload="none" hidden aria-label="Video work preview"></video></div></article></div></section>
-<div class="editorial-grid"><article class="about-card reveal" style="--i:1"><div class="about-monogram" aria-hidden="true">BA</div><div><span class="card-kicker">About</span><h3>Bashir Amri</h3><p>Visual design, video &amp; motion.</p></div></article><article class="now-card reveal" id="now-card" style="--i:3" hidden><span class="card-kicker">Currently</span><p id="now-text"></p><small id="now-date"></small></article></div>
+<section class="archive-showcase reveal" style="--i:0" aria-label="Automatic selected work slideshow"><div class="gallery-head"><h2>From my archive</h2></div><div class="archive-grid"><article class="archive-slot" data-slot="0" aria-label="Archive collection 1"><div class="archive-visual"><a class="slide-link" href="https://bashiramri.ir/studio/en/archive/" aria-label="Explore RAH-81 in the archive"><img src="https://drive.google.com/thumbnail?id=138LjlEe-aM9GPpOarA4BsaOLHT73_dO7&sz=w640" width="600" height="750" alt="RAH-81" decoding="async"></a><video muted playsinline loop preload="none" hidden aria-label="Video work preview"></video></div></article><article class="archive-slot" data-slot="1" aria-label="Archive collection 2"><div class="archive-visual"><a class="slide-link" href="https://bashiramri.ir/studio/en/archive/" aria-label="Explore AATTRR 2 in the archive"><img src="https://lh3.googleusercontent.com/d/1DA5u01JhRjgNdQ6bjKDtCsM3-gQFuHAZ" width="600" height="750" alt="AATTRR 2" decoding="async"></a><video muted playsinline loop preload="none" hidden aria-label="Video work preview"></video></div></article><article class="archive-slot" data-slot="2" aria-label="Archive collection 3"><div class="archive-visual"><a class="slide-link" href="https://bashiramri.ir/studio/en/archive/" aria-label="Explore The Night in the archive"><img src="https://lh3.googleusercontent.com/d/1S_ryUZDk568uoZZMU-hWyO82m59XtrxB" width="600" height="750" alt="The Night" decoding="async"></a><video muted playsinline loop preload="none" hidden aria-label="Video work preview"></video></div></article></div><button type="button" id="gallery-pause" aria-label="Pause slideshow" title="Pause slideshow" aria-pressed="false"><svg class="pause-bars" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="pause-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 11 7-11 7z"/></svg></button></section>
+<div class="editorial-grid"><article class="now-card reveal" id="now-card" style="--i:3" hidden><span class="card-kicker">Currently</span><p id="now-text"></p><small id="now-date"></small></article></div>
 <a class="action reveal" style="--i:1" href="https://bashiramri.ir/studio/en/archive/"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><span><strong>Explore my work</strong><small>More video, motion &amp; visual projects</small></span><span class="arrow" aria-hidden="true">↗</span></a>
-<a class="action talk reveal" style="--i:2" href="tg://resolve?domain=bashiramrii"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" stroke="none" d="M21.5 4.3 18.4 19c-.2 1-1 1.2-1.8.7l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.4-4.9 8.9-8c.4-.4-.1-.6-.6-.3L6.1 13l-4.7-1.5c-1-.3-1-1 .2-1.5L20 2.9c.9-.3 1.7.2 1.5 1.4Z"/></svg></span><span><strong>Let’s talk</strong><small>For projects &amp; collaborations · Telegram</small></span><span class="arrow" aria-hidden="true">↗</span></a>
-<p class="contact-note reveal" style="--i:2">Prefer a browser? <a href="https://t.me/bashiramrii" target="_blank" rel="noopener noreferrer">Open Telegram on the web ↗</a></p>
+<a class="action talk reveal" style="--i:2" href="https://t.me/bashiramrii"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" stroke="none" d="M21.5 4.3 18.4 19c-.2 1-1 1.2-1.8.7l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.4-4.9 8.9-8c.4-.4-.1-.6-.6-.3L6.1 13l-4.7-1.5c-1-.3-1-1 .2-1.5L20 2.9c.9-.3 1.7.2 1.5 1.4Z"/></svg></span><span><strong>Let’s talk</strong><small>For projects &amp; collaborations · Telegram</small></span><span class="arrow" aria-hidden="true">↗</span></a>
+
 <nav class="socials reveal" style="--i:3" aria-label="Elsewhere"><a href="https://www.instagram.com/bashir_amri84/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a><a href="https://www.linkedin.com/in/bashiramri/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" stroke="none" d="M5 3.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM3.4 9h3.2v11H3.4zM9 9h3.1v1.5h.1A3.4 3.4 0 0 1 15.3 8.7c3.3 0 3.9 2.1 3.9 4.9V20H16v-5.7c0-1.4 0-3.1-1.9-3.1s-2.1 1.5-2.1 3V20H9z"/></svg>LinkedIn</a><a href="mailto:bashiramri84@gmail.com"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>Email</a></nav>
 <a class="portfolio-home reveal" style="--i:4" href="https://bashiramri.ir/"><span>My main site <span aria-hidden="true">·</span> Work &amp; projects</span><span aria-hidden="true">↗</span></a>
 <button class="bottom-close" type="button" data-close>Close folder ↑</button>
@@ -179,13 +225,27 @@ function clearText(){clearTimeout(textTimer);document.body.classList.remove('tex
 function clearFolder(){clearTimeout(folderTimer);document.body.classList.remove('folder-glitch')}
 function clearEffects(){clearOverlay();clearText();clearFolder()}
 function textGlitch(soft){clearText();if(motion.matches||document.hidden)return;void document.body.offsetWidth;document.body.classList.toggle('text-soft',soft);document.body.classList.add('text-glitch');textTimer=setTimeout(clearText,420)}
+const deskObjects=[...document.querySelectorAll('.photo,.note,.tags')];
+const deskAnimations=new Map();
+function moveDeskObjects(before){
+ if(motion.matches)return;
+ deskObjects.forEach((el,i)=>{
+  const after=el.getBoundingClientRect(),transform=getComputedStyle(el).transform;
+  const dx=before[i].left-after.left,dy=before[i].top-after.top;
+  const animation=el.animate([{transform:`translate(${dx}px,${dy}px) ${transform==='none'?'':transform}`},{transform}],{duration:620+i*45,easing:'cubic-bezier(.22,1,.36,1)'});
+  deskAnimations.set(el,animation);
+  animation.onfinish=()=>deskAnimations.delete(el);
+ });
+}
 function setOpen(next){
  if(!document.getElementById("surprise").hidden){document.getElementById("surprise").hidden=true;document.getElementById("star").setAttribute("aria-expanded","false")}
  if(next===opened||performance.now()-lastAction<180)return;
  const active=document.activeElement;
  if(!next&&(contents.contains(active)||closeButtons.includes(active)))folder.focus({preventScroll:true});
+ const deskBefore=deskObjects.map(el=>el.getBoundingClientRect());
+ deskAnimations.forEach(animation=>animation.cancel());deskAnimations.clear();
  opened=next;lastAction=performance.now();clearEffects();
- root.classList.toggle('opened',opened);folder.setAttribute('aria-expanded',String(opened));folder.setAttribute('aria-label',opened?'Close my folder':'Open my folder');
+ root.classList.toggle('opened',opened);moveDeskObjects(deskBefore);folder.setAttribute('aria-expanded',String(opened));folder.setAttribute('aria-label',opened?'Close my folder':'Open my folder');
  contents.inert=!opened;contents.setAttribute('aria-hidden',String(!opened));topClose.tabIndex=opened?0:-1;tag.textContent=opened?'Close ↑':'Open ↗';
  textGlitch(false);
  if(!motion.matches&&!document.hidden){void folder.offsetWidth;document.body.classList.add('folder-glitch');folderTimer=setTimeout(clearFolder,540)}
@@ -203,7 +263,7 @@ setInterval(()=>{
  textGlitch(true);
 },3000);
 document.addEventListener('visibilitychange',()=>{if(document.hidden)clearEffects()});
-if(motion.addEventListener)motion.addEventListener('change',clearEffects);
+if(motion.addEventListener)motion.addEventListener('change',()=>{clearEffects();deskAnimations.forEach(animation=>animation.cancel());deskAnimations.clear()});
 /* Populate both values with verified current information to show the NOW card. */
 const nowContent={text:'',updated:''};
 if(nowContent.text.trim()&&nowContent.updated.trim()){document.getElementById('now-text').textContent=nowContent.text;document.getElementById('now-date').textContent='Updated '+nowContent.updated;document.getElementById('now-card').hidden=false}
@@ -216,29 +276,43 @@ const archiveGroups=[[{"title":"RAH-81","type":"Video editing","id":"138LjlEe-aM
 const slots=[...document.querySelectorAll('.archive-slot')],positions=[0,0,0];
 const pauseButton=document.getElementById('gallery-pause');
 let userPaused=motion.matches,galleryInView=false;
-function updatePause(){pauseButton.textContent=userPaused?'Resume slideshow':'Pause slideshow';pauseButton.setAttribute('aria-pressed',String(userPaused))}
+function updatePause(){pauseButton.hidden=motion.matches;const label=userPaused?'Resume slideshow':'Pause slideshow';pauseButton.setAttribute('aria-label',label);pauseButton.title=label;pauseButton.setAttribute('aria-pressed',String(userPaused))}
 function stopVideos(){slots.forEach(slot=>slot.querySelectorAll('video').forEach(v=>v.pause()))}
 function runVideos(){
  if(!opened||!galleryInView||document.hidden||userPaused||motion.matches){stopVideos();return}
- slots.forEach((slot,i)=>{const item=archiveGroups[i][positions[i]],v=slot.querySelector('video[data-id="'+item.id+'"]');if(item.video&&v){v.muted=true;v.play().catch(()=>{v.hidden=true})}});
+ slots.forEach((slot,i)=>{const item=archiveGroups[i][positions[i]],v=slot.querySelector('video[data-id="'+item.id+'"]');if(item.video&&v){v.muted=true;v.hidden=false;v.play().catch(()=>{v.hidden=true})}});
 }
-function showSlide(i,step){
- const slot=slots[i];slot.querySelectorAll('video').forEach(v=>{v.pause();v.hidden=true});
- positions[i]=(positions[i]+step+archiveGroups[i].length)%archiveGroups[i].length;
- const item=archiveGroups[i][positions[i]],img=slot.querySelector('img'),link=slot.querySelector('.slide-link');
+const imageCache=new Map(),slideRequests=[0,0,0];
+function loadImage(url){
+ if(!imageCache.has(url)){const image=new Image();image.src=url;imageCache.set(url,image.decode().then(()=>true).catch(()=>{imageCache.delete(url);return false}))}
+ return imageCache.get(url);
+}
+async function showSlide(i,step){
+ const slot=slots[i],request=++slideRequests[i],next=(positions[i]+step+archiveGroups[i].length)%archiveGroups[i].length;
+ const item=archiveGroups[i][next],img=slot.querySelector('img'),link=slot.querySelector('.slide-link');
+ // Keep the existing frame until its replacement is decoded, including on slow connections.
+ const ready=await loadImage(item.image);
+ if(!ready||request!==slideRequests[i]||(step&&(!opened||userPaused||motion.matches||document.hidden)))return;
+ slot.querySelectorAll('video').forEach(v=>{v.pause();v.hidden=true});positions[i]=next;
  img.src=item.image;img.alt=item.title;link.setAttribute('aria-label','Explore '+item.title+' in the archive');
- if(!motion.matches)img.animate([{opacity:.25},{opacity:1}],{duration:250,easing:'ease-out'});
- if(item.video){let v=slot.querySelector('video[data-id="'+item.id+'"]');if(!v){v=document.createElement('video');v.dataset.id=item.id;v.muted=true;v.playsInline=true;v.loop=true;v.preload='auto';v.src='https://royal-bar-6010.bashiramri84.workers.dev/preview?id='+item.id;v.poster=item.image;v.setAttribute('aria-label',item.title+' video preview');v.addEventListener('error',()=>{v.hidden=true});slot.querySelector('.archive-visual').append(v)}v.hidden=false;v.currentTime=0}
+ img.getAnimations().forEach(a=>a.cancel());if(!motion.matches)img.animate([{opacity:.25},{opacity:1}],{duration:250,easing:'ease-out'});
+ if(item.video){let v=slot.querySelector('video[data-id="'+item.id+'"]');if(!v){v=document.createElement('video');v.dataset.id=item.id;v.muted=true;v.playsInline=true;v.loop=true;v.preload='none';v.src='https://royal-bar-6010.bashiramri84.workers.dev/preview?id='+item.id;v.poster=item.image;v.setAttribute('aria-label',item.title+' video preview');v.addEventListener('error',()=>{v.hidden=true});slot.querySelector('.archive-visual').append(v)}v.hidden=false;v.currentTime=0}
+ runVideos();
 }
 slots.forEach((slot,i)=>{showSlide(i,0);slot.querySelector('video').addEventListener('error',()=>{slot.querySelector('video').hidden=true})});
-pauseButton.addEventListener('click',()=>{userPaused=!userPaused;updatePause();runVideos()});updatePause();
-const observer=new IntersectionObserver(entries=>{galleryInView=entries[0].isIntersecting;runVideos()},{threshold:.05});
-observer.observe(document.querySelector('.archive-showcase'));
-setInterval(()=>{
+let slideTimer;
+function scheduleSlides(){
+ clearTimeout(slideTimer);
+ runVideos();
  if(!opened||!galleryInView||document.hidden||userPaused||motion.matches)return;
- slots.forEach((slot,i)=>showSlide(i,1));runVideos();
-},4000);
-document.addEventListener('visibilitychange',runVideos);
-if(motion.addEventListener)motion.addEventListener('change',()=>{if(motion.matches){userPaused=true;updatePause()}runVideos()});
-const folderObserver=new MutationObserver(runVideos);folderObserver.observe(folder,{attributes:true,attributeFilter:['aria-expanded']});
+ // Warm the next image without loading the whole archive up front.
+ slots.forEach((slot,i)=>{const next=archiveGroups[i][(positions[i]+1)%archiveGroups[i].length];loadImage(next.image)});
+ slideTimer=setTimeout(()=>{slots.forEach((slot,i)=>showSlide(i,1));scheduleSlides()},4000);
+}
+pauseButton.addEventListener('click',()=>{userPaused=!userPaused;updatePause();scheduleSlides()});updatePause();
+const observer=new IntersectionObserver(entries=>{galleryInView=entries[0].isIntersecting;scheduleSlides()},{threshold:.05});
+observer.observe(document.querySelector('.archive-showcase'));
+document.addEventListener('visibilitychange',scheduleSlides);
+if(motion.addEventListener)motion.addEventListener('change',()=>{if(motion.matches)userPaused=true;updatePause();scheduleSlides()});
+const folderObserver=new MutationObserver(scheduleSlides);folderObserver.observe(folder,{attributes:true,attributeFilter:['aria-expanded']});
 </script></body></html>
