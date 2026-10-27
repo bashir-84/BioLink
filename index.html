@@ -31,7 +31,7 @@ footer{margin-top:40px;color:#4f6758;font-size:10px;letter-spacing:1.4px} .foote
 body.glitching .glitch-overlay{animation:scan-glitch .52s steps(2,end)}
 body.glitching main,body.glitching header,body.glitching footer{animation:page-glitch .52s steps(2,end)}
 @keyframes scan-glitch{0%,100%{opacity:0;transform:translateX(0)}15%{opacity:.75;transform:translateX(-4px)}35%{opacity:.35;transform:translateX(4px)}55%{opacity:.6;transform:translateX(-2px)}75%{opacity:.2;transform:translateX(2px)}}
-@keyframes page-glitch{0%,100%{filter:none;translate:0}12%{filter:drop-shadow(3px 0 #ff486d) drop-shadow(-3px 0 #54dfff);translate:2px 0}24%{filter:hue-rotate(35deg);translate:-2px 0}38%{filter:drop-shadow(-3px 0 #ff486d) drop-shadow(3px 0 #54dfff);translate:3px 0}55%{filter:hue-rotate(-25deg);translate:-1px 0}70%{filter:drop-shadow(2px 0 #ff486d) drop-shadow(-2px 0 #54dfff)}}
+@keyframes page-glitch{0%,100%{filter:none;translate:0}12%{filter:drop-shadow(3px 0 #4f9870) drop-shadow(-3px 0 #a3e8be);translate:2px 0}24%{filter:hue-rotate(10deg);translate:-2px 0}38%{filter:drop-shadow(-3px 0 #4f9870) drop-shadow(3px 0 #a3e8be);translate:3px 0}55%{filter:hue-rotate(-10deg);translate:-1px 0}70%{filter:drop-shadow(2px 0 #4f9870) drop-shadow(-2px 0 #a3e8be)}}
 @media(prefers-reduced-motion:reduce){body.glitching .glitch-overlay,body.glitching main,body.glitching header,body.glitching footer{animation:none}}
 </style>
 </head>
@@ -61,6 +61,7 @@ let opened=false;
 function toggleFolder(){opened=!opened;root.classList.toggle('opened',opened);folder.setAttribute('aria-expanded',String(opened));folder.setAttribute('aria-label',opened?'Close my folder':'Open my folder');links.inert=!opened;links.setAttribute('aria-hidden',String(!opened));}
 let glitchTimer;
 function glitch(){if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.body.classList.remove('glitching');void document.body.offsetWidth;document.body.classList.add('glitching');clearTimeout(glitchTimer);glitchTimer=setTimeout(()=>document.body.classList.remove('glitching'),520)}
-folder.addEventListener('click',()=>{toggleFolder();glitch()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened){toggleFolder();folder.focus()}});
+folder.addEventListener('click',()=>{toggleFolder();glitch()});
+setInterval(()=>{if(!document.hidden)glitch()},6000);document.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened){toggleFolder();folder.focus()}});
 </script>
 </body></html>
