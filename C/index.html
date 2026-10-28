@@ -155,9 +155,6 @@ header,main,footer{z-index:1}.desk{position:relative;width:100%;height:290px;tra
 .archive-showcase{position:relative}.archive-slot{border-color:#7aaa8a44;box-shadow:0 8px 24px #0003;transition:border-color .2s}
 .archive-slot:hover,.archive-slot:focus-within{border-color:#a9dcba}
 .archive-visual video{pointer-events:none}
-#gallery-pause{position:absolute;right:8px;bottom:8px;z-index:3;width:44px;height:44px;display:grid;place-items:center;padding:0;border:1px solid #d2efdc55;border-radius:50%;background:#0a1c12c9;backdrop-filter:blur(8px);color:#effbf2;transition:background .2s;box-shadow:0 3px 12px #0003}
-#gallery-pause:hover{background:#284d36}#gallery-pause[hidden]{display:none}
-#gallery-pause svg{width:17px;height:17px}.pause-play{display:none}#gallery-pause[aria-pressed="true"] .pause-bars{display:none}#gallery-pause[aria-pressed="true"] .pause-play{display:block}
 .editorial-grid:has(.now-card[hidden]){display:none}
 .socials{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;border:0;padding:0;margin:18px 0}
 .socials a{min-width:0;min-height:78px;justify-content:center;gap:10px;font-size:14px;color:#dceee1;border:1px solid #64846d70;background:linear-gradient(145deg,#233c2c,#14281c);border-radius:15px;padding:12px 8px;transition:transform .25s var(--ease),background .2s,border-color .2s}
@@ -198,6 +195,7 @@ header,main,footer{z-index:1}.desk{position:relative;width:100%;height:290px;tra
 .bottom-links a{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:52px;padding:12px 15px;border:1px solid #64846d70;border-radius:13px;background:#15291d;color:#cde1d2;font-size:13px}
 .bottom-links a:hover{background:#284431;border-color:#a3cbb0}
 @media(max-width:480px){.gallery-head h2{font-size:12px}.tags,.opened .tags{right:50%;translate:50% 0;top:316px;width:max-content;padding:8px 12px;transform:none}.opened .tags{top:165px}.tags span{font-size:11px!important;line-height:20px}.opened .desk{height:208px}.opened .desk .folder-dock{height:130px}}
+.archive-visual .previous-frame{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;z-index:2}
 </style></head><body>
 <div class="glitch-overlay" aria-hidden="true"></div>
 <header><a class="wordmark" href="https://bashiramri.ir/" aria-label="Bashir's main site">bashir<span>.</span></a><span class="version">Design C</span></header>
@@ -208,7 +206,7 @@ header,main,footer{z-index:1}.desk{position:relative;width:100%;height:290px;tra
 <button class="folder" id="folder" aria-label="Open my folder" aria-expanded="false" aria-controls="contents"><span class="folder-art" aria-hidden="true"><span class="back"></span><span class="paper one preview-paper"><img src="https://lh3.googleusercontent.com/d/1bc7TI5WsOFAFVGopHU1x62PtXGfvWJoJ" alt=""></span><span class="paper two preview-paper"><img src="https://lh3.googleusercontent.com/d/1S_ryUZDk568uoZZMU-hWyO82m59XtrxB" alt=""></span><span class="front"><span>✳</span> My little world <small id="folder-tag">Open ↗</small></span></span></button>
 </div></div>
 <section class="drawer" id="contents" inert aria-hidden="true" aria-label="Inside my folder"><div class="drawer-inner">
-<section class="archive-showcase reveal" style="--i:0" aria-label="Automatic selected work slideshow"><div class="gallery-head"><h2>From my archive</h2></div><div class="archive-grid"><article class="archive-slot" data-slot="0" aria-label="Archive collection 1"><div class="archive-visual"><a class="slide-link" href="https://bashiramri.ir/studio/en/archive/" aria-label="Explore RAH-81 in the archive"><img src="https://drive.google.com/thumbnail?id=138LjlEe-aM9GPpOarA4BsaOLHT73_dO7&sz=w640" width="600" height="750" alt="RAH-81" decoding="async"></a><video muted playsinline loop preload="none" hidden aria-label="Video work preview"></video></div></article><article class="archive-slot" data-slot="1" aria-label="Archive collection 2"><div class="archive-visual"><a class="slide-link" href="https://bashiramri.ir/studio/en/archive/" aria-label="Explore AATTRR 2 in the archive"><img src="https://lh3.googleusercontent.com/d/1DA5u01JhRjgNdQ6bjKDtCsM3-gQFuHAZ" width="600" height="750" alt="AATTRR 2" decoding="async"></a><video muted playsinline loop preload="none" hidden aria-label="Video work preview"></video></div></article><article class="archive-slot" data-slot="2" aria-label="Archive collection 3"><div class="archive-visual"><a class="slide-link" href="https://bashiramri.ir/studio/en/archive/" aria-label="Explore The Night in the archive"><img src="https://lh3.googleusercontent.com/d/1S_ryUZDk568uoZZMU-hWyO82m59XtrxB" width="600" height="750" alt="The Night" decoding="async"></a><video muted playsinline loop preload="none" hidden aria-label="Video work preview"></video></div></article></div><button type="button" id="gallery-pause" aria-label="Pause slideshow" title="Pause slideshow" aria-pressed="false"><svg class="pause-bars" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="pause-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 11 7-11 7z"/></svg></button></section>
+<section class="archive-showcase reveal" style="--i:0" aria-label="Automatic selected work slideshow"><div class="gallery-head"><h2>From my archive</h2></div><div class="archive-grid"><article class="archive-slot" data-slot="0" aria-label="Archive collection 1"><div class="archive-visual"><a class="slide-link" href="https://bashiramri.ir/studio/en/archive/" aria-label="Explore RAH-81 in the archive"><img src="https://drive.google.com/thumbnail?id=138LjlEe-aM9GPpOarA4BsaOLHT73_dO7&sz=w640" width="600" height="750" alt="RAH-81" decoding="async"></a><video muted playsinline loop preload="none" hidden aria-label="Video work preview"></video></div></article><article class="archive-slot" data-slot="1" aria-label="Archive collection 2"><div class="archive-visual"><a class="slide-link" href="https://bashiramri.ir/studio/en/archive/" aria-label="Explore AATTRR 2 in the archive"><img src="https://lh3.googleusercontent.com/d/1DA5u01JhRjgNdQ6bjKDtCsM3-gQFuHAZ" width="600" height="750" alt="AATTRR 2" decoding="async"></a><video muted playsinline loop preload="none" hidden aria-label="Video work preview"></video></div></article><article class="archive-slot" data-slot="2" aria-label="Archive collection 3"><div class="archive-visual"><a class="slide-link" href="https://bashiramri.ir/studio/en/archive/" aria-label="Explore The Night in the archive"><img src="https://lh3.googleusercontent.com/d/1S_ryUZDk568uoZZMU-hWyO82m59XtrxB" width="600" height="750" alt="The Night" decoding="async"></a><video muted playsinline loop preload="none" hidden aria-label="Video work preview"></video></div></article></div></section>
 <div class="editorial-grid"><article class="now-card reveal" id="now-card" style="--i:3" hidden><span class="card-kicker">Currently</span><p id="now-text"></p><small id="now-date"></small></article></div>
 <a class="action reveal" style="--i:1" href="https://bashiramri.ir/studio/en/archive/"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><span><strong>Explore my work</strong><small>More video, motion &amp; visual projects</small></span><span class="arrow" aria-hidden="true">↗</span></a>
 <a class="action talk reveal" style="--i:2" href="https://t.me/bashiramrii"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" stroke="none" d="M21.5 4.3 18.4 19c-.2 1-1 1.2-1.8.7l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.4-4.9 8.9-8c.4-.4-.1-.6-.6-.3L6.1 13l-4.7-1.5c-1-.3-1-1 .2-1.5L20 2.9c.9-.3 1.7.2 1.5 1.4Z"/></svg></span><span><strong>Let’s talk</strong><small>For projects &amp; collaborations · Telegram</small></span><span class="arrow" aria-hidden="true">↗</span></a>
@@ -273,12 +271,10 @@ const nowContent={text:'',updated:''};
 if(nowContent.text.trim()&&nowContent.updated.trim()){document.getElementById('now-text').textContent=nowContent.text;document.getElementById('now-date').textContent='Updated '+nowContent.updated;document.getElementById('now-card').hidden=false}
 const archiveGroups=[[{"title":"RAH-81","type":"Video editing","id":"138LjlEe-aM9GPpOarA4BsaOLHT73_dO7","video":true,"image":"https://drive.google.com/thumbnail?id=138LjlEe-aM9GPpOarA4BsaOLHT73_dO7&sz=w640"},{"title":"Tark-e Eshgh-e Darya","type":"Music cover","id":"1bc7TI5WsOFAFVGopHU1x62PtXGfvWJoJ","video":false,"image":"https://lh3.googleusercontent.com/d/1bc7TI5WsOFAFVGopHU1x62PtXGfvWJoJ"},{"title":"JENGOpoor","type":"Poster","id":"1jnMiaTNaBz9G4xvuWe0rX7YKYd96Qfo9","video":false,"image":"https://lh3.googleusercontent.com/d/1jnMiaTNaBz9G4xvuWe0rX7YKYd96Qfo9"},{"title":"Album Matarsak 21","type":"Poster","id":"1uWt4oXfLiM4YuIJxeLKwWxaGx0PsJjk8","video":false,"image":"https://lh3.googleusercontent.com/d/1uWt4oXfLiM4YuIJxeLKwWxaGx0PsJjk8"}],[{"title":"AATTRR 2","type":"Poster","id":"1DA5u01JhRjgNdQ6bjKDtCsM3-gQFuHAZ","video":false,"image":"https://lh3.googleusercontent.com/d/1DA5u01JhRjgNdQ6bjKDtCsM3-gQFuHAZ"},{"title":"RAH-81 (2)","type":"Video editing","id":"1HS3CEGu6vNBF0p5CGyuo3zNFOTy5um9h","video":true,"image":"https://drive.google.com/thumbnail?id=1HS3CEGu6vNBF0p5CGyuo3zNFOTy5um9h&sz=w640"},{"title":"Fajr","type":"Poster","id":"1tkWZb3Fv3xjsO8Zi8I1JA0pHzG-1wN05","video":false,"image":"https://lh3.googleusercontent.com/d/1tkWZb3Fv3xjsO8Zi8I1JA0pHzG-1wN05"},{"title":"AK2","type":"Video editing","id":"1bno0Mj947-o9eSRNnJtCU4VV4ID6V7wh","video":true,"image":"https://drive.google.com/thumbnail?id=1bno0Mj947-o9eSRNnJtCU4VV4ID6V7wh&sz=w640"}],[{"title":"The Night","type":"Music cover","id":"1S_ryUZDk568uoZZMU-hWyO82m59XtrxB","video":false,"image":"https://lh3.googleusercontent.com/d/1S_ryUZDk568uoZZMU-hWyO82m59XtrxB"},{"title":"Album Matarsak 21","type":"Poster","id":"1uWt4oXfLiM4YuIJxeLKwWxaGx0PsJjk8","video":false,"image":"https://lh3.googleusercontent.com/d/1uWt4oXfLiM4YuIJxeLKwWxaGx0PsJjk8"},{"title":"AK2","type":"Video editing","id":"1bno0Mj947-o9eSRNnJtCU4VV4ID6V7wh","video":true,"image":"https://drive.google.com/thumbnail?id=1bno0Mj947-o9eSRNnJtCU4VV4ID6V7wh&sz=w640"},{"title":"Tark-e Eshgh-e Darya","type":"Music cover","id":"1bc7TI5WsOFAFVGopHU1x62PtXGfvWJoJ","video":false,"image":"https://lh3.googleusercontent.com/d/1bc7TI5WsOFAFVGopHU1x62PtXGfvWJoJ"}]];
 const slots=[...document.querySelectorAll('.archive-slot')],positions=[0,0,0];
-const pauseButton=document.getElementById('gallery-pause');
-let userPaused=motion.matches,galleryInView=false;
-function updatePause(){pauseButton.hidden=motion.matches;const label=userPaused?'Resume slideshow':'Pause slideshow';pauseButton.setAttribute('aria-label',label);pauseButton.title=label;pauseButton.setAttribute('aria-pressed',String(userPaused))}
+let galleryInView=false;
 function stopVideos(){slots.forEach(slot=>slot.querySelectorAll('video').forEach(v=>v.pause()))}
 function runVideos(){
- if(!opened||!galleryInView||document.hidden||userPaused||motion.matches){stopVideos();return}
+ if(!opened||!galleryInView||document.hidden||motion.matches){stopVideos();return}
  slots.forEach((slot,i)=>{const item=archiveGroups[i][positions[i]],v=slot.querySelector('video[data-id="'+item.id+'"]');if(item.video&&v){v.muted=true;v.hidden=false;v.play().catch(()=>{v.hidden=true})}});
 }
 const imageCache=new Map(),slideRequests=[0,0,0];
@@ -291,10 +287,15 @@ async function showSlide(i,step){
  const item=archiveGroups[i][next],img=slot.querySelector('img'),link=slot.querySelector('.slide-link');
  // Keep the existing frame until its replacement is decoded, including on slow connections.
  const ready=await loadImage(item.image);
- if(!ready||request!==slideRequests[i]||(step&&(!opened||userPaused||motion.matches||document.hidden)))return;
+ if(!ready||request!==slideRequests[i]||(step&&(!opened||motion.matches||document.hidden)))return;
+ if(step&&!motion.matches&&img.complete&&img.naturalWidth){
+  const previous=img.cloneNode();previous.className='previous-frame';previous.alt='';previous.setAttribute('aria-hidden','true');
+  slot.querySelectorAll('.previous-frame').forEach(el=>el.remove());slot.querySelector('.archive-visual').append(previous);
+  previous.animate([{opacity:1},{opacity:0}],{duration:650,easing:'ease-in-out'}).onfinish=()=>previous.remove();
+ }
  slot.querySelectorAll('video').forEach(v=>{v.pause();v.hidden=true});positions[i]=next;
  img.src=item.image;img.alt=item.title;link.setAttribute('aria-label','Explore '+item.title+' in the archive');
- img.getAnimations().forEach(a=>a.cancel());if(!motion.matches)img.animate([{opacity:.25},{opacity:1}],{duration:250,easing:'ease-out'});
+ img.getAnimations().forEach(a=>a.cancel());if(step&&!motion.matches)img.animate([{opacity:.65},{opacity:1}],{duration:650,easing:'ease-in-out'});
  if(item.video){let v=slot.querySelector('video[data-id="'+item.id+'"]');if(!v){v=document.createElement('video');v.dataset.id=item.id;v.muted=true;v.playsInline=true;v.loop=true;v.preload='none';v.src='https://royal-bar-6010.bashiramri84.workers.dev/preview?id='+item.id;v.poster=item.image;v.setAttribute('aria-label',item.title+' video preview');v.addEventListener('error',()=>{v.hidden=true});slot.querySelector('.archive-visual').append(v)}v.hidden=false;v.currentTime=0}
  runVideos();
 }
@@ -303,15 +304,14 @@ let slideTimer;
 function scheduleSlides(){
  clearTimeout(slideTimer);
  runVideos();
- if(!opened||!galleryInView||document.hidden||userPaused||motion.matches)return;
+ if(!opened||!galleryInView||document.hidden||motion.matches)return;
  // Warm the next image without loading the whole archive up front.
  slots.forEach((slot,i)=>{const next=archiveGroups[i][(positions[i]+1)%archiveGroups[i].length];loadImage(next.image)});
  slideTimer=setTimeout(()=>{slots.forEach((slot,i)=>showSlide(i,1));scheduleSlides()},4000);
 }
-pauseButton.addEventListener('click',()=>{userPaused=!userPaused;updatePause();scheduleSlides()});updatePause();
 const observer=new IntersectionObserver(entries=>{galleryInView=entries[0].isIntersecting;scheduleSlides()},{threshold:.05});
 observer.observe(document.querySelector('.archive-showcase'));
 document.addEventListener('visibilitychange',scheduleSlides);
-if(motion.addEventListener)motion.addEventListener('change',()=>{if(motion.matches)userPaused=true;updatePause();scheduleSlides()});
+if(motion.addEventListener)motion.addEventListener('change',scheduleSlides);
 const folderObserver=new MutationObserver(scheduleSlides);folderObserver.observe(folder,{attributes:true,attributeFilter:['aria-expanded']});
 </script></body></html>
